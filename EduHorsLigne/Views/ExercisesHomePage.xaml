@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.ExercisesHomePage"
+             x:DataType="vm:ExercisesHomeViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [ex_bar], Source={x:Static loc:Loc.Instance}}" ShowBack="True" />
+        <Grid Grid.Row="1">
+
+            <ScrollView>
+                <c:CenteredContent MaxContentWidth="720">
+                    <VerticalStackLayout Padding="16,4,16,32" Spacing="14">
+                        <Border Style="{StaticResource SoftCard}" Padding="12,8">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Text="{Binding StorageText, StringFormat='☁ Stockage local : {0}'}" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" />
+                                <c:Badge Grid.Column="1" Text="{Binding [ex_synced], Source={x:Static loc:Loc.Instance}}" Tone="Ok" Icon="●" />
+                            </Grid>
+                        </Border>
+                        <Border Style="{StaticResource FieldBorder}">
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
+                                <Label Text="🔍" VerticalOptions="Center" />
+                                <Entry Grid.Column="1" Placeholder="{Binding [ex_search], Source={x:Static loc:Loc.Instance}}" SemanticProperties.Description="{Binding [ex_search], Source={x:Static loc:Loc.Instance}}" />
+                                <Label Grid.Column="2" Text="☰" FontSize="18" VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+                        <c:ChipBar Mode="Chips" Items="{Binding FilterItems}" SelectedIndex="{Binding FilterIndex}" />
+                        <Border StrokeThickness="0" Padding="18">
+                            <Border.StrokeShape><RoundRectangle CornerRadius="20" /></Border.StrokeShape>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="{StaticResource PrimaryDarkColor}" Offset="0" />
+                                    <GradientStop Color="{StaticResource PrimaryColor}" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <VerticalStackLayout Spacing="8">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label Text="{Binding [ex_zero_data], Source={x:Static loc:Loc.Instance}}" TextColor="#CCFFFFFF" FontSize="11" FontAttributes="Bold" />
+                                    <Border Grid.Column="1" BackgroundColor="#33FFFFFF" StrokeThickness="0" Padding="8,3">
+                                        <Border.StrokeShape><RoundRectangle CornerRadius="8" /></Border.StrokeShape>
+                                        <Label Text="Syllabus MINESEC" TextColor="White" FontSize="11" />
+                                    </Border>
+                                </Grid>
+                                <Label Text="{Binding [ex_bank_title], Source={x:Static loc:Loc.Instance}}" TextColor="White" FontSize="22" FontAttributes="Bold" />
+                                <Label Text="{Binding [ex_bank_text], Source={x:Static loc:Loc.Instance}}" TextColor="#CCFFFFFF" FontSize="13" />
+                                <Button Text="{Binding [ex_download_pack], Source={x:Static loc:Loc.Instance}}" Command="{Binding DownloadPackCommand}" BackgroundColor="White" TextColor="{StaticResource PrimaryDarkColor}" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="{Binding [ex_recommended], Source={x:Static loc:Loc.Instance}}" FontSize="19" FontAttributes="Bold" />
+                            <Button Grid.Column="1" Style="{StaticResource TextButton}" Text="{Binding [see_all_short], Source={x:Static loc:Loc.Instance}}" FontSize="13" Command="{Binding SeeAllCommand}" />
+                        </Grid>
+                        <Border Style="{StaticResource Card}">
+                            <VerticalStackLayout Spacing="10">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <HorizontalStackLayout Spacing="6">
+                                        <c:Badge Text="Session 2024" Tone="Neutral" />
+                                        <c:Badge Text="Obligatoire Tle C" Tone="Warn" />
+                                    </HorizontalStackLayout>
+                                    <Label Grid.Column="1" Text="🔖" FontSize="20" />
+                                </Grid>
+                                <Label Text="Épreuve zéro MINESEC 2024 - Mathématiques" FontSize="20" FontAttributes="Bold" />
+                                <Border Style="{StaticResource SoftCard}" Padding="10">
+                                    <Grid ColumnDefinitions="*,*,*">
+                                        <VerticalStackLayout HorizontalOptions="Center"><Label Text="{Binding [ex_volume], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" HorizontalOptions="Center" /><Label Text="4 exercices" FontAttributes="Bold" FontSize="14" HorizontalOptions="Center" /></VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center"><Label Text="{Binding [ex_duration], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" HorizontalOptions="Center" /><Label Text="4h00" FontAttributes="Bold" FontSize="14" HorizontalOptions="Center" /></VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center"><Label Text="{Binding [ex_scale], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" HorizontalOptions="Center" /><Label Text="20 pts" FontAttributes="Bold" FontSize="14" HorizontalOptions="Center" /></VerticalStackLayout>
+                                    </Grid>
+                                </Border>
+                                <Grid ColumnDefinitions="*,Auto"><Label Text="{Binding [ex_in_progress], Source={x:Static loc:Loc.Instance}}" FontSize="13" FontAttributes="Bold" /><Label Grid.Column="1" Text="25% terminé" FontSize="13" Style="{StaticResource MutedLabel}" /></Grid>
+                                <ProgressBar Progress="0.25" />
+                                <Button Text="{Binding [ex_resume_session], Source={x:Static loc:Loc.Instance}}" Command="{Binding ResumeSessionCommand}" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="{Binding [ex_by_chapter], Source={x:Static loc:Loc.Instance}}" FontSize="19" FontAttributes="Bold" />
+                            <c:Badge Grid.Column="1" Text="{Binding [ex_program_tag], Source={x:Static loc:Loc.Instance}}" Tone="Neutral" />
+                        </Grid>
+                        <VerticalStackLayout Spacing="12" BindableLayout.ItemsSource="{Binding Chapters}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="vm:ExerciseChapter">
+                                    <Border Style="{StaticResource Card}" Padding="14">
+                                        <VerticalStackLayout Spacing="8">
+                                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                                                <c:IconCircle Glyph="{Binding Numero}" Tone="Neutral" Diameter="32" VerticalOptions="Center" />
+                                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                                    <Label Text="{Binding Titre}" FontSize="18" FontAttributes="Bold" />
+                                                    <Label Text="{Binding Resume}" Style="{StaticResource CaptionLabel}" />
+                                                </VerticalStackLayout>
+                                                <Button Grid.Column="2" Text="{Binding Chevron}" Style="{StaticResource TextButton}" FontSize="20" Command="{Binding ToggleCommand}"
+                                                        SemanticProperties.Description="{Binding Titre}" />
+                                            </Grid>
+                                            <VerticalStackLayout Spacing="8" IsVisible="{Binding IsExpanded}" BindableLayout.ItemsSource="{Binding Rows}">
+                                                <BindableLayout.ItemTemplate>
+                                                    <DataTemplate x:DataType="vm:ExerciseRow">
+                                                        <Border Style="{StaticResource SoftCard}" Padding="12">
+                                                            <Border.GestureRecognizers><TapGestureRecognizer Command="{Binding OpenCommand}" /></Border.GestureRecognizers>
+                                                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                                                <VerticalStackLayout Spacing="4">
+                                                                    <Label Text="{Binding Item.Etiquette}" FontSize="11" FontAttributes="Bold"
+                                                                           TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                                                                    <Label Text="{Binding Item.Titre}" FontAttributes="Bold" FontSize="15" />
+                                                                    <FlexLayout Wrap="Wrap" AlignItems="Center">
+                                                                        <c:Badge Kind="{Binding Item.Difficulte}" Margin="0,0,6,4" />
+                                                                        <Label Text="{Binding Item.DureeTexte}" FontSize="12" Margin="0,0,8,4" VerticalOptions="Center" />
+                                                                        <Label Text="{Binding Item.PointsTexte}" FontSize="12" Margin="0,0,8,4" VerticalOptions="Center" />
+                                                                        <Label Text="{Binding Item.Resultat, StringFormat='✔ {0}'}" IsVisible="{Binding Item.ShowResultat}" FontSize="12" FontAttributes="Bold" Margin="0,0,8,4" VerticalOptions="Center"
+                                                                               TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                                                                        <c:Badge Text="{Binding [ex_corrected], Source={x:Static loc:Loc.Instance}}" Tone="Neutral" IsVisible="{Binding Item.Corrige}" Margin="0,0,6,4" />
+                                                                        <Label Text="{Binding Item.EtatTexte}" IsVisible="{Binding Item.ShowEtatTexte}" Style="{StaticResource CaptionLabel}" VerticalOptions="Center" Margin="0,0,0,4" />
+                                                                    </FlexLayout>
+                                                                </VerticalStackLayout>
+                                                                <Grid Grid.Column="1" VerticalOptions="Center">
+                                                                    <c:IconCircle Glyph="✓" Tone="Primary" Diameter="30" IsVisible="{Binding Item.ShowDone}" />
+                                                                    <c:IconCircle Glyph="→" Tone="Neutral" Diameter="34" IsVisible="{Binding Item.ShowArrow}" />
+                                                                    <c:IconCircle Glyph="⬇" Tone="Accent" Diameter="34" IsVisible="{Binding Item.ShowDownload}" />
+                                                                </Grid>
+                                                            </Grid>
+                                                        </Border>
+                                                    </DataTemplate>
+                                                </BindableLayout.ItemTemplate>
+                                            </VerticalStackLayout>
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                        <Border Style="{StaticResource SoftCard}" Padding="14">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                <c:IconCircle Glyph="✓" Tone="Primary" Diameter="28" VerticalOptions="Start" />
+                                <Label Grid.Column="1" Text="{Binding [ex_offline_note], Source={x:Static loc:Loc.Instance}}" FontSize="14" />
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+                </c:CenteredContent>
+            </ScrollView>
+            <c:StateOverlay State="{Binding State}" />
+        </Grid>
+    </Grid>
+</ContentPage>

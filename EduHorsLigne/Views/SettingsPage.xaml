@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.SettingsPage"
+             x:DataType="vm:SettingsViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [settings_title], Source={x:Static loc:Loc.Instance}}" ShowBack="True" />
+        <Grid Grid.Row="1">
+
+    <ScrollView>
+        <c:CenteredContent>
+            <VerticalStackLayout Padding="16" Spacing="12">
+                <Border Style="{StaticResource Card}">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="{Binding [settings_language], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" />
+                        <RadioButton GroupName="lang" Content="Français" IsChecked="{Binding IsFrench}" />
+                        <RadioButton GroupName="lang" Content="English" IsChecked="{Binding IsEnglish}" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Style="{StaticResource Card}">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="{Binding [settings_display], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" />
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="{Binding [settings_dark], Source={x:Static loc:Loc.Instance}}" VerticalOptions="Center" />
+                            <Switch Grid.Column="1" IsToggled="{Binding IsDark}" SemanticProperties.Description="{Binding [settings_dark], Source={x:Static loc:Loc.Instance}}" />
+                        </Grid>
+                        <Label Text="{Binding [settings_text_size], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                        <Slider Minimum="0.8" Maximum="1.4" Value="{Binding TextScale}" />
+                        <Label Text="{Binding [settings_preview], Source={x:Static loc:Loc.Instance}}" FontSize="{Binding PreviewFontSize}" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Style="{StaticResource Card}">
+                    <VerticalStackLayout Spacing="4">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="{Binding [settings_wifi], Source={x:Static loc:Loc.Instance}}" VerticalOptions="Center" />
+                            <Switch Grid.Column="1" IsToggled="{Binding WifiOnly}" SemanticProperties.Description="{Binding [settings_wifi], Source={x:Static loc:Loc.Instance}}" />
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="{Binding [settings_notifications], Source={x:Static loc:Loc.Instance}}" VerticalOptions="Center" />
+                            <Switch Grid.Column="1" IsToggled="{Binding Notifications}" SemanticProperties.Description="{Binding [settings_notifications], Source={x:Static loc:Loc.Instance}}" />
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="{Binding [settings_pin], Source={x:Static loc:Loc.Instance}}" VerticalOptions="Center" />
+                            <Switch Grid.Column="1" IsToggled="{Binding PinEnabled}" SemanticProperties.Description="{Binding [settings_pin], Source={x:Static loc:Loc.Instance}}" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+                <Button Style="{StaticResource SecondaryButton}" Text="{Binding [settings_help], Source={x:Static loc:Loc.Instance}}" Command="{Binding OpenHelpCommand}" />
+                <Button Style="{StaticResource SecondaryButton}" Text="{Binding [report_error], Source={x:Static loc:Loc.Instance}}" loc:Demo.ComingSoon="True" />
+                <Border Style="{StaticResource SoftCard}">
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="{Binding [settings_demo], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" />
+                        <Label Text="{Binding [settings_demo_text], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" />
+                        <Border Style="{StaticResource FieldBorder}">
+                            <Picker ItemsSource="{Binding StateOptions}" SelectedIndex="{Binding StateIndex}" Title="{Binding [settings_demo], Source={x:Static loc:Loc.Instance}}" />
+                        </Border>
+                        <Button Style="{StaticResource SecondaryButton}" Text="{Binding [settings_gallery], Source={x:Static loc:Loc.Instance}}" Command="{Binding OpenGalleryCommand}" />
+                    </VerticalStackLayout>
+                </Border>
+                <Button Text="{Binding [delete_account], Source={x:Static loc:Loc.Instance}}" loc:Demo.Confirm="delete_account_warning"
+                        BackgroundColor="{StaticResource ErrorColor}" TextColor="White" />
+            </VerticalStackLayout>
+        </c:CenteredContent>
+    </ScrollView>
+        </Grid>
+    </Grid>
+</ContentPage>

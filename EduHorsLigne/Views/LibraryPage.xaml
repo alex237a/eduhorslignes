@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.LibraryPage"
+             x:DataType="vm:LibraryViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [tab_library], Source={x:Static loc:Loc.Instance}}" />
+        <Grid Grid.Row="1">
+
+    <Grid RowDefinitions="Auto,*">
+        <VerticalStackLayout Padding="16,8" Spacing="4">
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout Spacing="8">
+                    <RadioButton GroupName="libTab" Content="{Binding [lib_favorites], Source={x:Static loc:Loc.Instance}}" IsChecked="{Binding IsFavoris}" />
+                    <RadioButton GroupName="libTab" Content="{Binding [lib_notes], Source={x:Static loc:Loc.Instance}}" IsChecked="{Binding IsNotes}" />
+                    <RadioButton GroupName="libTab" Content="{Binding [lib_bookmarks], Source={x:Static loc:Loc.Instance}}" IsChecked="{Binding IsMarquePages}" />
+                    <RadioButton GroupName="libTab" Content="{Binding [lib_redo], Source={x:Static loc:Loc.Instance}}" IsChecked="{Binding IsARefaire}" />
+                </HorizontalStackLayout>
+            </ScrollView>
+            <Border Style="{StaticResource FieldBorder}">
+                <Picker ItemsSource="{Binding SubjectFilters}" SelectedIndex="{Binding FilterIndex}" Title="{Binding [filter_title], Source={x:Static loc:Loc.Instance}}" />
+            </Border>
+        </VerticalStackLayout>
+        <Grid Grid.Row="1">
+            <CollectionView ItemsSource="{Binding Items}" SelectionMode="Single" SelectedItem="{Binding SelectedItem}" Margin="16,0">
+                <CollectionView.Behaviors><loc:ResponsiveSpanBehavior /></CollectionView.Behaviors>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:LibraryItem">
+                        <Border Style="{StaticResource Card}" Padding="12">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Label Text="{Binding Icone}" FontSize="24" VerticalOptions="Center" />
+                                <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                    <Label Text="{Binding Titre}" FontAttributes="Bold" />
+                                    <Label Text="{Binding SousTitre}" Style="{StaticResource CaptionLabel}" />
+                                    <Label Text="{Binding Matiere}" Style="{StaticResource CaptionLabel}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <c:EmptyState Icon="🗂" Title="{Binding EmptyTitle}" Message="{Binding [lib_empty_text], Source={x:Static loc:Loc.Instance}}" />
+                </CollectionView.EmptyView>
+            </CollectionView>
+            <c:StateOverlay State="{Binding State}" />
+        </Grid>
+    </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

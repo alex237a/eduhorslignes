@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.GalleryPage"
+             x:DataType="vm:GalleryViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [settings_gallery], Source={x:Static loc:Loc.Instance}}" ShowBack="True" />
+        <Grid Grid.Row="1">
+
+    <ScrollView>
+        <c:CenteredContent MaxContentWidth="720">
+            <VerticalStackLayout Padding="16" Spacing="12">
+                <Label Text="{Binding [gal_fields], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" />
+                <c:FormField Title="{Binding [gal_normal], Source={x:Static loc:Loc.Instance}}" Placeholder="{Binding [ph_identifier], Source={x:Static loc:Loc.Instance}}" />
+                <c:FormField Title="{Binding [gal_filled], Source={x:Static loc:Loc.Instance}}" Text="{Binding SampleText}" />
+                <c:FormField Title="{Binding [gal_error], Source={x:Static loc:Loc.Instance}}" Text="abc" ErrorText="{Binding [err_identifier], Source={x:Static loc:Loc.Instance}}" />
+                <c:FormField Title="{Binding [gal_disabled], Source={x:Static loc:Loc.Instance}}" Text="{Binding SampleText}" IsEnabled="False" />
+
+                <Label Text="{Binding [gal_buttons], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" Margin="0,12,0,0" />
+                <Button Text="{Binding [gal_primary], Source={x:Static loc:Loc.Instance}}" />
+                <Button Style="{StaticResource SecondaryButton}" Text="{Binding [gal_secondary], Source={x:Static loc:Loc.Instance}}" />
+                <Button Style="{StaticResource TextButton}" Text="{Binding [gal_text], Source={x:Static loc:Loc.Instance}}" />
+                <Button Text="{Binding [gal_disabled], Source={x:Static loc:Loc.Instance}}" IsEnabled="False" />
+
+                <Label Text="{Binding [gal_lessons], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" Margin="0,12,0,0" />
+                <VerticalStackLayout Spacing="8" BindableLayout.ItemsSource="{Binding Lecons}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="m:Lecon"><c:LessonRow /></DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+
+                <Label Text="{Binding [gal_badges], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" Margin="0,12,0,0" />
+                <FlexLayout Wrap="Wrap" JustifyContent="Start">
+                    <c:Badge Kind="Easy" Margin="0,0,8,8" /><c:Badge Kind="Medium" Margin="0,0,8,8" /><c:Badge Kind="Hard" Margin="0,0,8,8" />
+                    <c:Badge Kind="NotStarted" Margin="0,0,8,8" /><c:Badge Kind="InProgress" Margin="0,0,8,8" /><c:Badge Kind="Done" Margin="0,0,8,8" />
+                    <c:Badge Kind="Correct" Margin="0,0,8,8" /><c:Badge Kind="Partial" Margin="0,0,8,8" /><c:Badge Kind="Incorrect" Margin="0,0,8,8" />
+                </FlexLayout>
+
+                <Label Text="{Binding [gal_sync], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" Margin="0,12,0,0" />
+                <HorizontalStackLayout Spacing="8">
+                    <c:Badge Kind="sync_ok" /><c:Badge Kind="sync_pending" /><c:Badge Kind="sync_failed" />
+                </HorizontalStackLayout>
+                <c:OfflineBanner />
+
+                <Label Text="{Binding [gal_empty], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" Margin="0,12,0,0" />
+                <Border Style="{StaticResource Card}">
+                    <c:EmptyState Icon="📚" Title="{Binding [empty_home_title], Source={x:Static loc:Loc.Instance}}" Message="{Binding [empty_home_text], Source={x:Static loc:Loc.Instance}}" ButtonText="{Binding [empty_home_btn], Source={x:Static loc:Loc.Instance}}" />
+                </Border>
+
+                <Label Text="{Binding [gal_loading], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" Margin="0,12,0,0" />
+                <Border Style="{StaticResource Card}">
+                    <VerticalStackLayout Spacing="6">
+                        <ProgressBar Progress="{Binding SampleProgress}" />
+                        <Label Text="{Binding SampleProgress, StringFormat='{0:P0}'}" Style="{StaticResource CaptionLabel}" />
+                        <ActivityIndicator IsRunning="True" HeightRequest="32" />
+                        <Border Style="{StaticResource SoftCard}" HeightRequest="16" Padding="0"><Border.StrokeShape><RoundRectangle CornerRadius="8" /></Border.StrokeShape></Border>
+                        <Border Style="{StaticResource SoftCard}" HeightRequest="16" Padding="0" WidthRequest="200" HorizontalOptions="Start"><Border.StrokeShape><RoundRectangle CornerRadius="8" /></Border.StrokeShape></Border>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Label Text="{Binding [gal_errors], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" Margin="0,12,0,0" />
+                <c:InlineAlert Kind="error" Text="{Binding [err_login|fr], Source={x:Static loc:Loc.Instance}}" />
+                <c:InlineAlert Kind="error" Text="{Binding [err_login|en], Source={x:Static loc:Loc.Instance}}" />
+                <c:InlineAlert Kind="error" Text="{Binding [err_network|fr], Source={x:Static loc:Loc.Instance}}" />
+                <c:InlineAlert Kind="error" Text="{Binding [err_network|en], Source={x:Static loc:Loc.Instance}}" />
+                <c:InlineAlert Kind="error" Text="{Binding [err_space|fr], Source={x:Static loc:Loc.Instance}}" />
+                <c:InlineAlert Kind="error" Text="{Binding [err_space|en], Source={x:Static loc:Loc.Instance}}" />
+                <c:InlineAlert Kind="error" Text="{Binding [err_corrupt|fr], Source={x:Static loc:Loc.Instance}}" />
+                <c:InlineAlert Kind="error" Text="{Binding [err_corrupt|en], Source={x:Static loc:Loc.Instance}}" />
+                <c:InlineAlert Kind="success" Text="{Binding [ok_download|fr], Source={x:Static loc:Loc.Instance}}" />
+                <c:InlineAlert Kind="success" Text="{Binding [ok_download|en], Source={x:Static loc:Loc.Instance}}" />
+            </VerticalStackLayout>
+        </c:CenteredContent>
+    </ScrollView>
+        </Grid>
+    </Grid>
+</ContentPage>

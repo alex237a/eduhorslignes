@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.LessonDetailPage"
+             x:DataType="vm:LessonDetailViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [lesson_title], Source={x:Static loc:Loc.Instance}}" ShowBack="True" />
+        <Grid Grid.Row="1">
+
+            <ScrollView>
+                <c:CenteredContent MaxContentWidth="640">
+                    <VerticalStackLayout Padding="16,0,16,32" Spacing="12">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="{Binding StorageLine, StringFormat='● {0} stockés'}" Style="{StaticResource CaptionLabel}" FontAttributes="Bold" />
+                            <Label Grid.Column="1" Text="{Binding [lesson_class_tag], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <c:Badge Text="{Binding Chapitre}" Tone="Ok" Icon="📖" HorizontalOptions="Start" />
+                            <Button Grid.Column="1" Text="{Binding FavoriteIcon}" Style="{StaticResource SoftButton}" FontSize="20" Padding="0" WidthRequest="44"
+                                    Command="{Binding ToggleFavoriteCommand}" SemanticProperties.Description="{Binding [favorite], Source={x:Static loc:Loc.Instance}}" />
+                        </Grid>
+                        <Label Text="{Binding Lecon.Titre}" FontSize="28" FontAttributes="Bold" />
+                        <Label Text="{Binding [lesson_program], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                        <Grid>
+                            <Border StrokeThickness="0" Padding="0" HeightRequest="190">
+                                <Border.StrokeShape><RoundRectangle CornerRadius="16" /></Border.StrokeShape>
+                                <Image Source="photo_blackboard.jpg" Aspect="AspectFill" SemanticProperties.Description="{Binding [lesson_certified], Source={x:Static loc:Loc.Instance}}" />
+                            </Border>
+                            <Label Text="{Binding [lesson_certified], Source={x:Static loc:Loc.Instance}}" TextColor="White" FontSize="13" BackgroundColor="#99000000" Padding="12,8" VerticalOptions="End" />
+                        </Grid>
+                        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                            <Border Style="{StaticResource Card}" Padding="10"><VerticalStackLayout HorizontalOptions="Center">
+                                <Label Text="{Binding DureeLecture}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+                                <Label Text="{Binding [meta_reading], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" HorizontalOptions="Center" /></VerticalStackLayout></Border>
+                            <Border Grid.Column="1" Style="{StaticResource Card}" Padding="10"><VerticalStackLayout HorizontalOptions="Center">
+                                <Label Text="{Binding Taille}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+                                <Label Text="{Binding [meta_size], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" HorizontalOptions="Center" /></VerticalStackLayout></Border>
+                            <Border Grid.Column="2" Style="{StaticResource Card}" Padding="10"><VerticalStackLayout HorizontalOptions="Center">
+                                <Label Text="{Binding VersionTexte}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+                                <Label Text="{Binding DateMaj}" Style="{StaticResource CaptionLabel}" HorizontalOptions="Center" /></VerticalStackLayout></Border>
+                        </Grid>
+                        <Border Style="{StaticResource Card}">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="{Binding [lesson_statement_title], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" FontSize="14"
+                                       TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                                <Label Text="{Binding [lesson_statement_text], Source={x:Static loc:Loc.Instance}}" FontSize="14" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Button Text="{Binding [download], Source={x:Static loc:Loc.Instance}}" Command="{Binding OpenSheetCommand}" />
+                        <Button Style="{StaticResource SecondaryButton}" Text="{Binding [read], Source={x:Static loc:Loc.Instance}}" Command="{Binding ReadCommand}" />
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                            <Button Style="{StaticResource SoftButton}" Text="{Binding [exercises], Source={x:Static loc:Loc.Instance}}" Command="{Binding ExercisesCommand}" />
+                            <Button Grid.Column="1" Style="{StaticResource SoftButton}" Text="{Binding [quiz], Source={x:Static loc:Loc.Instance}}" Command="{Binding QuizCommand}" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </c:CenteredContent>
+            </ScrollView>
+
+            <Grid IsVisible="{Binding ShowSheet}">
+                <BoxView Color="#99000000">
+                    <BoxView.GestureRecognizers><TapGestureRecognizer Command="{Binding CloseSheetCommand}" /></BoxView.GestureRecognizers>
+                </BoxView>
+                <Border VerticalOptions="End" Padding="20,12,20,20" StrokeThickness="0"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceLight}, Dark={StaticResource SurfaceDark}}">
+                    <Border.StrokeShape><RoundRectangle CornerRadius="24,24,0,0" /></Border.StrokeShape>
+                    <c:CenteredContent MaxContentWidth="560">
+                        <VerticalStackLayout Spacing="12">
+                            <BoxView HeightRequest="4" WidthRequest="40" CornerRadius="2" Color="{StaticResource OutlineLight}" HorizontalOptions="Center" />
+                            <Grid ColumnDefinitions="*,Auto">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding [sheet_title], Source={x:Static loc:Loc.Instance}}" FontSize="20" FontAttributes="Bold" />
+                                    <Label Text="{Binding [sheet_subtitle], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                                </VerticalStackLayout>
+                                <c:IconCircle Grid.Column="1" Glyph="⬇" Tone="Ok" />
+                            </Grid>
+                            <Border Style="{StaticResource SoftCard}" Padding="14">
+                                <VerticalStackLayout Spacing="8">
+                                    <Grid ColumnDefinitions="*,Auto"><Label Text="{Binding [sheet_file_size], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" /><Label Grid.Column="1" Text="{Binding Taille}" FontAttributes="Bold" /></Grid>
+                                    <Grid ColumnDefinitions="*,Auto"><Label Text="{Binding [sheet_free_space], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" /><Label Grid.Column="1" Text="{Binding [sheet_free_value], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" /></Grid>
+                                    <ProgressBar Progress="0.07" />
+                                    <Label Text="{Binding [sheet_after], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                                </VerticalStackLayout>
+                            </Border>
+                            <Grid ColumnDefinitions="*,Auto">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding [settings_wifi], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" FontSize="14" />
+                                    <Label Text="{Binding [sheet_wifi_text], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                                </VerticalStackLayout>
+                                <Switch Grid.Column="1" IsToggled="{Binding WifiOnly}" SemanticProperties.Description="{Binding [settings_wifi], Source={x:Static loc:Loc.Instance}}" />
+                            </Grid>
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                                <Button Style="{StaticResource SoftButton}" Text="{Binding [cancel], Source={x:Static loc:Loc.Instance}}" Command="{Binding CloseSheetCommand}" />
+                                <Button Grid.Column="1" Text="{Binding [download], Source={x:Static loc:Loc.Instance}}" Command="{Binding ConfirmDownloadCommand}" />
+                            </Grid>
+                        </VerticalStackLayout>
+                    </c:CenteredContent>
+                </Border>
+            </Grid>
+            <c:StateOverlay State="{Binding State}" />
+        </Grid>
+    </Grid>
+</ContentPage>

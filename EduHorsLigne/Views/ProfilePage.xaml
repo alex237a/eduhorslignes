@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.ProfilePage"
+             x:DataType="vm:ProfileViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [tab_profile], Source={x:Static loc:Loc.Instance}}" ShowAvatar="False" />
+        <Grid Grid.Row="1">
+
+    <Grid>
+        <ScrollView>
+            <c:CenteredContent>
+                <VerticalStackLayout Padding="16" Spacing="12">
+                    <Border BackgroundColor="{StaticResource PrimaryColor}" StrokeThickness="0" WidthRequest="88" HeightRequest="88" Padding="0" HorizontalOptions="Center" Margin="0,16,0,0">
+                        <Border.StrokeShape><RoundRectangle CornerRadius="44" /></Border.StrokeShape>
+                        <Label Text="{Binding Eleve.Initiales}" TextColor="White" FontSize="32" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="6">
+                        <Label Text="{Binding Eleve.Prenom}" Style="{StaticResource TitleLabel}" />
+                        <Label Text="{Binding Eleve.Nom}" Style="{StaticResource TitleLabel}" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="6">
+                        <Label Text="{Binding Eleve.Classe}" Style="{StaticResource MutedLabel}" />
+                        <Label Text="·" Style="{StaticResource MutedLabel}" />
+                        <Label Text="{Binding Eleve.SousSysteme}" Style="{StaticResource MutedLabel}" />
+                    </HorizontalStackLayout>
+                    <Button Style="{StaticResource SecondaryButton}" Text="{Binding [profile_settings], Source={x:Static loc:Loc.Instance}}" Command="{Binding OpenSettingsCommand}" />
+                    <Button Style="{StaticResource SecondaryButton}" Text="{Binding [profile_storage], Source={x:Static loc:Loc.Instance}}" Command="{Binding OpenStorageCommand}" />
+                    <Button Style="{StaticResource SecondaryButton}" Text="{Binding [profile_help], Source={x:Static loc:Loc.Instance}}" Command="{Binding OpenHelpCommand}" />
+                    <Button Text="{Binding [profile_logout], Source={x:Static loc:Loc.Instance}}" Command="{Binding LogoutCommand}"
+                            BackgroundColor="{StaticResource ErrorColor}" TextColor="White" Margin="0,16,0,0" />
+                </VerticalStackLayout>
+            </c:CenteredContent>
+        </ScrollView>
+        <c:StateOverlay State="{Binding State}" />
+    </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

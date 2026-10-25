@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.SearchPage"
+             x:DataType="vm:SearchViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [tab_search], Source={x:Static loc:Loc.Instance}}" />
+        <Grid Grid.Row="1">
+
+            <CollectionView ItemsSource="{Binding Results}" SelectionMode="Single" SelectedItem="{Binding SelectedResult}" Margin="16,0">
+                <CollectionView.ItemsLayout><LinearItemsLayout Orientation="Vertical" ItemSpacing="10" /></CollectionView.ItemsLayout>
+                <CollectionView.Header>
+                    <VerticalStackLayout Spacing="10" Padding="0,4,0,10">
+                        <Border Style="{StaticResource FieldBorder}">
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
+                                <Label Text="🔍" VerticalOptions="Center" />
+                                <Entry Grid.Column="1" Text="{Binding Query}" Placeholder="{Binding [search_placeholder], Source={x:Static loc:Loc.Instance}}" ReturnType="Search"
+                                       SemanticProperties.Description="{Binding [search_placeholder], Source={x:Static loc:Loc.Instance}}" />
+                                <Button Grid.Column="2" Text="✕" Style="{StaticResource SoftButton}" Padding="0" WidthRequest="36" HeightRequest="36" MinimumHeightRequest="36"
+                                        MinimumWidthRequest="36" CornerRadius="18" IsVisible="{Binding HasQuery}" Command="{Binding ClearCommand}"
+                                        SemanticProperties.Description="{Binding [clear], Source={x:Static loc:Loc.Instance}}" />
+                            </Grid>
+                        </Border>
+                        <c:ChipBar Mode="Chips" Items="{Binding FilterOptions}" SelectedIndex="{Binding FilterIndex}" />
+                        <Grid ColumnDefinitions="*,Auto" IsVisible="{Binding HasQuery}">
+                            <HorizontalStackLayout Spacing="6">
+                                <Label Text="{Binding CountText}" FontAttributes="Bold" FontSize="13" />
+                                <Label Text="{Binding [search_offline], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                            <c:Badge Grid.Column="1" Text="{Binding [search_local_sync], Source={x:Static loc:Loc.Instance}}" Tone="Ok" Icon="●" />
+                        </Grid>
+                        <c:EmptyState IsVisible="{Binding NoResults}" Icon="🔎" Title="{Binding [search_none_title], Source={x:Static loc:Loc.Instance}}" Message="{Binding [search_none_text], Source={x:Static loc:Loc.Instance}}" />
+                    </VerticalStackLayout>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:SearchResult">
+                        <Border Style="{StaticResource Card}" Padding="14">
+                            <VerticalStackLayout Spacing="6">
+                                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                    <Label Text="{Binding Titre}" FontSize="18" FontAttributes="Bold" />
+                                    <c:Badge Grid.Column="1" Text="{Binding Etiquette}" Tone="{Binding EtiquetteTon}" Icon="{Binding EtiquetteIcone}" VerticalOptions="Start" />
+                                </Grid>
+                                <Label FontSize="14">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Avant}" />
+                                            <Span Text="{Binding Mot}" FontAttributes="Bold" BackgroundColor="{StaticResource AccentColor}" TextColor="{StaticResource ToneNeutralFg}" />
+                                            <Span Text="{Binding Apres}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <HorizontalStackLayout Spacing="6">
+                                    <Label Text="{Binding SourceIcone}" FontSize="12" FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                                    <Label Text="{Binding Source}" FontSize="12" FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.Footer>
+                    <Border Style="{StaticResource SoftCard}" Padding="14" Margin="0,12,0,24">
+                        <Border.GestureRecognizers><TapGestureRecognizer Command="{Binding OpenAnnalesCommand}" /></Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                            <c:IconCircle Glyph="📚" Tone="Neutral" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1">
+                                <Label Text="{Binding [annales_title], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" FontSize="14" />
+                                <Label Text="{Binding [annales_text], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" />
+                            </VerticalStackLayout>
+                            <Label Grid.Column="2" Text="›" FontSize="24" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </CollectionView.Footer>
+            </CollectionView>
+            <c:StateOverlay State="{Binding State}" />
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.OtpPage"
+             x:DataType="vm:OtpViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [otp_bar], Source={x:Static loc:Loc.Instance}}" ShowBack="True" ShowAvatar="False" />
+        <Grid Grid.Row="1">
+
+            <ScrollView>
+                <c:CenteredContent>
+                    <VerticalStackLayout Padding="16,8,16,32" Spacing="12">
+                        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="6">
+                            <BoxView HeightRequest="4" CornerRadius="2" Color="{StaticResource PrimaryColor}" />
+                            <BoxView Grid.Column="1" HeightRequest="4" CornerRadius="2" Color="{StaticResource PrimaryColor}" />
+                            <BoxView Grid.Column="2" HeightRequest="4" CornerRadius="2" Color="{StaticResource OutlineLight}" />
+                        </Grid>
+                        <Label Text="{Binding [otp_step], Source={x:Static loc:Loc.Instance}}" FontSize="12" FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                        <Label Text="{Binding [otp_title], Source={x:Static loc:Loc.Instance}}" FontSize="28" FontAttributes="Bold" />
+                        <Label Text="{Binding [otp_text_long], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" FontSize="15" />
+                        <Border Style="{StaticResource Card}">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="{Binding [otp_code_up], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" FontAttributes="Bold" HorizontalOptions="Center" />
+                                <Border Style="{StaticResource FieldBorder}">
+                                    <Entry Text="{Binding Code}" Keyboard="Numeric" MaxLength="6" FontSize="28" HorizontalTextAlignment="Center"
+                                           CharacterSpacing="8" Placeholder="— — — — — —" SemanticProperties.Description="{Binding [otp_field], Source={x:Static loc:Loc.Instance}}" />
+                                </Border>
+                                <Label Text="{Binding [otp_valid], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Border Style="{StaticResource Card}">
+                            <c:FormField Title="{Binding [field_new_password_up], Source={x:Static loc:Loc.Instance}}" UpperTitle="True" Placeholder="{Binding [ph_new_password], Source={x:Static loc:Loc.Instance}}"
+                                         Text="{Binding Password}" IsPassword="True" ErrorText="{Binding PasswordError}" />
+                        </Border>
+                        <Border Style="{StaticResource Card}">
+                            <c:FormField Title="{Binding [field_confirm_up], Source={x:Static loc:Loc.Instance}}" UpperTitle="True" Placeholder="{Binding [ph_confirm], Source={x:Static loc:Loc.Instance}}"
+                                         Text="{Binding Confirm}" IsPassword="True" ErrorText="{Binding ConfirmError}" />
+                        </Border>
+                        <Button Text="{Binding [otp_submit], Source={x:Static loc:Loc.Instance}}" Command="{Binding SubmitCommand}" Margin="0,4,0,0" />
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                            <Label Text="{Binding [otp_not_received], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" VerticalOptions="Center" />
+                            <Button Style="{StaticResource TextButton}" Text="{Binding [otp_resend], Source={x:Static loc:Loc.Instance}}" Command="{Binding ResendCommand}" />
+                        </HorizontalStackLayout>
+                        <c:Badge Text="{Binding [otp_sms_note], Source={x:Static loc:Loc.Instance}}" Tone="Neutral" Icon="ⓘ" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </c:CenteredContent>
+            </ScrollView>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.HomePage"
+             x:DataType="vm:HomeViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [tab_home], Source={x:Static loc:Loc.Instance}}" ShowLogo="True" ShowOffline="True" />
+        <Grid Grid.Row="1">
+
+            <CollectionView IsVisible="{Binding IsFilledHome}" ItemsSource="{Binding Matieres}" SelectionMode="Single"
+                            SelectedItem="{Binding SelectedMatiere}" Margin="16,0">
+                <CollectionView.Behaviors><loc:ResponsiveSpanBehavior Compact="2" Medium="3" Expanded="4" /></CollectionView.Behaviors>
+                <CollectionView.Header>
+                    <VerticalStackLayout Spacing="14" Padding="0,8,0,8">
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                            <VerticalStackLayout Spacing="2">
+                                <HorizontalStackLayout Spacing="2">
+                                    <Label Text="{Binding [home_hello], Source={x:Static loc:Loc.Instance}}" FontSize="26" FontAttributes="Bold" />
+                                    <Label Text="{Binding Eleve.Prenom, StringFormat=', {0}'}" FontSize="26" FontAttributes="Bold" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="4">
+                                    <Label Text="{Binding Eleve.Classe}" Style="{StaticResource MutedLabel}" />
+                                    <Label Text="·" Style="{StaticResource MutedLabel}" />
+                                    <Label Text="{Binding [home_subsystem_fr], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                            <Grid Grid.Column="1">
+                                <Border BackgroundColor="{StaticResource PrimaryColor}" StrokeThickness="0" WidthRequest="52" HeightRequest="52" Padding="0">
+                                    <Border.StrokeShape><RoundRectangle CornerRadius="26" /></Border.StrokeShape>
+                                    <Label Text="{Binding Eleve.Initiales}" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+                                <c:IconCircle Glyph="⚡" Tone="Primary" Diameter="18" HorizontalOptions="End" VerticalOptions="End" />
+                            </Grid>
+                        </Grid>
+                        <Border StrokeThickness="0" Padding="18">
+                            <Border.StrokeShape><RoundRectangle CornerRadius="20" /></Border.StrokeShape>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="{StaticResource PrimaryDarkColor}" Offset="0" />
+                                    <GradientStop Color="{StaticResource PrimaryColor}" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.GestureRecognizers><TapGestureRecognizer Command="{Binding OpenReaderCommand}" /></Border.GestureRecognizers>
+                            <VerticalStackLayout Spacing="8">
+                                <Grid ColumnDefinitions="Auto,*,Auto">
+                                    <Border BackgroundColor="#33FFFFFF" StrokeThickness="0" Padding="8,4">
+                                        <Border.StrokeShape><RoundRectangle CornerRadius="10" /></Border.StrokeShape>
+                                        <Label Text="{Binding [home_continue_chip], Source={x:Static loc:Loc.Instance}}" TextColor="White" FontSize="12" FontAttributes="Bold" />
+                                    </Border>
+                                    <Label Grid.Column="2" Text="45 %" TextColor="White" FontAttributes="Bold" VerticalOptions="Center" />
+                                </Grid>
+                                <Label Text="{Binding ContinueTitle}" TextColor="White" FontSize="19" FontAttributes="Bold" />
+                                <Label Text="{Binding ContinueContext}" TextColor="#CCFFFFFF" FontSize="13" />
+                                <ProgressBar Progress="{Binding ContinueProgress}" ProgressColor="White" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                            <Border Style="{StaticResource Card}" Padding="10">
+                                <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="2">
+                                        <Label Text="{Binding Streak}" FontSize="22" FontAttributes="Bold" />
+                                        <Label Text="🔥" FontSize="16" VerticalOptions="Center" />
+                                    </HorizontalStackLayout>
+                                    <Label Text="{Binding [stat_streak], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="10" />
+                                </VerticalStackLayout>
+                            </Border>
+                            <Border Grid.Column="1" Style="{StaticResource Card}" Padding="10">
+                                <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                                    <Label Text="{Binding WeekTime}" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center" />
+                                    <Label Text="{Binding [stat_week], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="10" />
+                                </VerticalStackLayout>
+                            </Border>
+                            <Border Grid.Column="2" Style="{StaticResource Card}" Padding="10">
+                                <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                                    <Label Text="{Binding GlobalPercent}" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center"
+                                           TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                                    <Label Text="{Binding [stat_progress], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="10" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto" Margin="0,6,0,0">
+                            <Label Text="{Binding [home_my_subjects], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" />
+                            <Button Grid.Column="1" Style="{StaticResource TextButton}" Text="{Binding [see_all], Source={x:Static loc:Loc.Instance}}" FontSize="14"
+                                    Command="{Binding OpenSubjectCommand}" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:Matiere"><c:SubjectCard Margin="0,0,0,0" /></DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.Footer>
+                    <Border Style="{StaticResource SoftCard}" Padding="14" Margin="0,12,0,24">
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                            <c:IconCircle Glyph="⬇" Tone="Neutral" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="{Binding [home_info], Source={x:Static loc:Loc.Instance}}" FontSize="14" />
+                        </Grid>
+                    </Border>
+                </CollectionView.Footer>
+            </CollectionView>
+
+            <ScrollView IsVisible="{Binding IsEmptyHome}">
+                <c:CenteredContent MaxContentWidth="560">
+                    <VerticalStackLayout Padding="16,8,16,24" Spacing="14">
+                        <Border Style="{StaticResource Card}">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <VerticalStackLayout Spacing="2">
+                                    <Label Text="{Binding [home_offline_session], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" FontAttributes="Bold" />
+                                    <HorizontalStackLayout Spacing="2">
+                                        <Label Text="{Binding [home_hello], Source={x:Static loc:Loc.Instance}}" FontSize="24" FontAttributes="Bold" />
+                                        <Label Text="{Binding Eleve.Prenom, StringFormat=', {0}'}" FontSize="24" FontAttributes="Bold" />
+                                    </HorizontalStackLayout>
+                                    <Label Text="{Binding [home_class_sub], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" />
+                                </VerticalStackLayout>
+                                <Border Grid.Column="1" BackgroundColor="{StaticResource PrimaryColor}" StrokeThickness="0" WidthRequest="52" HeightRequest="52" Padding="0">
+                                    <Border.StrokeShape><RoundRectangle CornerRadius="26" /></Border.StrokeShape>
+                                    <Label Text="{Binding Eleve.Initiales}" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+                            </Grid>
+                        </Border>
+                        <Border Style="{StaticResource SoftCard}" Padding="12">
+                            <Grid ColumnDefinitions="Auto,Auto,*,Auto" ColumnSpacing="10">
+                                <Label Text="💾" />
+                                <Label Grid.Column="1" Text="{Binding [storage_allocated], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" VerticalOptions="Center" />
+                                <ProgressBar Grid.Column="2" Progress="{Binding StorageFraction}" VerticalOptions="Center" />
+                                <Label Grid.Column="3" Text="{Binding StorageText}" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+                        <Grid HorizontalOptions="Center" Margin="0,12,0,0">
+                            <Border Style="{StaticResource SoftCard}" WidthRequest="150" HeightRequest="150" Padding="0">
+                                <Border.StrokeShape><RoundRectangle CornerRadius="75" /></Border.StrokeShape>
+                                <Label Text="📖" FontSize="64" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                            <c:IconCircle Glyph="⬇" Tone="Accent" Diameter="40" HorizontalOptions="End" VerticalOptions="Start" />
+                        </Grid>
+                        <Label Text="{Binding [empty_home_title], Source={x:Static loc:Loc.Instance}}" FontSize="22" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                        <Label Text="{Binding [empty_home_text], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" FontSize="15" HorizontalTextAlignment="Center" />
+                        <Button Text="{Binding [empty_home_btn], Source={x:Static loc:Loc.Instance}}" Command="{Binding OpenSubjectCommand}" />
+                        <Button Style="{StaticResource SecondaryButton}" Text="{Binding [empty_home_guide], Source={x:Static loc:Loc.Instance}}" Command="{Binding OpenGuideCommand}" />
+                        <Grid ColumnDefinitions="*,Auto" Margin="0,8,0,0">
+                            <Label Text="{Binding [empty_recommended], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" FontAttributes="Bold" />
+                            <Label Grid.Column="1" Text="{Binding [required_bac], Source={x:Static loc:Loc.Instance}}" FontSize="12" FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                        </Grid>
+                        <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                            <HorizontalStackLayout Spacing="8" BindableLayout.ItemsSource="{Binding Recommandees}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="m:Matiere">
+                                        <Button Text="{Binding Nom}" ClassId="{Binding Id}" Style="{StaticResource SecondaryButton}" Clicked="OnChipClicked" />
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </HorizontalStackLayout>
+                        </ScrollView>
+                        <Border Style="{StaticResource SoftCard}" Padding="14">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                <c:IconCircle Glyph="💡" Tone="Neutral" VerticalOptions="Start" />
+                                <VerticalStackLayout Grid.Column="1">
+                                    <Label Text="{Binding [data_tip_title], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" FontSize="14" />
+                                    <Label Text="{Binding [data_tip_text], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+                </c:CenteredContent>
+            </ScrollView>
+            <c:StateOverlay State="{Binding State}" ShowEmpty="False" />
+        </Grid>
+    </Grid>
+</ContentPage>

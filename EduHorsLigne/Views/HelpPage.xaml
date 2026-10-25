@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.HelpPage"
+             x:DataType="vm:HelpViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [help_title], Source={x:Static loc:Loc.Instance}}" ShowBack="True" />
+        <Grid Grid.Row="1">
+
+    <CollectionView ItemsSource="{Binding Faq}" Margin="16,0">
+        <CollectionView.ItemsLayout><LinearItemsLayout Orientation="Vertical" ItemSpacing="8" /></CollectionView.ItemsLayout>
+        <CollectionView.Header>
+            <Label Text="{Binding [help_faq], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource TitleLabel}" Margin="0,16,0,12" />
+        </CollectionView.Header>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="m:FaqItem">
+                <Border Style="{StaticResource Card}" Padding="12">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="{Binding Question}" FontAttributes="Bold" />
+                        <Label Text="{Binding Reponse}" Style="{StaticResource MutedLabel}" />
+                    </VerticalStackLayout>
+                </Border>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        <CollectionView.Footer><BoxView HeightRequest="24" Color="Transparent" /></CollectionView.Footer>
+    </CollectionView>
+        </Grid>
+    </Grid>
+</ContentPage>

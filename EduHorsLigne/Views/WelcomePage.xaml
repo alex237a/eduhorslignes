@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.WelcomePage"
+             x:DataType="vm:WelcomeViewModel"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <c:CenteredContent MaxContentWidth="560">
+            <VerticalStackLayout Padding="16,16,16,32" Spacing="14">
+                <c:Badge Text="{Binding [welcome_chip], Source={x:Static loc:Loc.Instance}}" Tone="Neutral" Icon="●" HorizontalOptions="Center" />
+                <Grid HorizontalOptions="Center" Margin="0,8,0,0">
+                    <Border WidthRequest="92" HeightRequest="92" StrokeThickness="0" Padding="0">
+                        <Border.StrokeShape><RoundRectangle CornerRadius="24" /></Border.StrokeShape>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="{StaticResource PrimaryDarkColor}" Offset="0" />
+                                <GradientStop Color="{StaticResource PrimaryColor}" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label Text="EH" TextColor="White" FontSize="34" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                    <c:IconCircle Glyph="⬇" Tone="Accent" Diameter="28" HorizontalOptions="End" VerticalOptions="Start" Margin="0,-8,-8,0" />
+                </Grid>
+                <Label Text="{Binding [welcome_title], Source={x:Static loc:Loc.Instance}}" FontSize="28" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                <Label Text="{Binding [welcome_text], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" FontSize="16" HorizontalTextAlignment="Center" />
+                <Grid>
+                    <Border StrokeThickness="0" Padding="0" HeightRequest="190">
+                        <Border.StrokeShape><RoundRectangle CornerRadius="16" /></Border.StrokeShape>
+                        <Image Source="photo_students.jpg" Aspect="AspectFill" SemanticProperties.Description="{Binding [welcome_photo_caption], Source={x:Static loc:Loc.Instance}}" />
+                    </Border>
+                    <Label Text="{Binding [welcome_photo_caption], Source={x:Static loc:Loc.Instance}}" TextColor="White" FontSize="13" BackgroundColor="#99000000"
+                           Padding="12,8" VerticalOptions="End" Margin="0" />
+                </Grid>
+                    <Border Style="{StaticResource Card}" Padding="14">
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" RowDefinitions="Auto,Auto">
+                            <c:IconCircle Glyph="☁" Tone="Neutral" Diameter="44" VerticalOptions="Start" />
+                            <Grid Grid.Column="1" ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                <Label Text="{Binding [feat1_title], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" FontSize="17" />
+                                <c:Badge Grid.Column="1" Text="{Binding [feat1_tag], Source={x:Static loc:Loc.Instance}}" Tone="Ok" VerticalOptions="Start" />
+                            </Grid>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding [feat1_text], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" />
+                        </Grid>
+                    </Border>
+                    <Border Style="{StaticResource Card}" Padding="14">
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" RowDefinitions="Auto,Auto">
+                            <c:IconCircle Glyph="📖" Tone="Neutral" Diameter="44" VerticalOptions="Start" />
+                            <Grid Grid.Column="1" ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                <Label Text="{Binding [feat2_title], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" FontSize="17" />
+                                <c:Badge Grid.Column="1" Text="{Binding [feat2_tag], Source={x:Static loc:Loc.Instance}}" Tone="Neutral" VerticalOptions="Start" />
+                            </Grid>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding [feat2_text], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" />
+                        </Grid>
+                    </Border>
+                    <Border Style="{StaticResource Card}" Padding="14">
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" RowDefinitions="Auto,Auto">
+                            <c:IconCircle Glyph="⏱" Tone="Neutral" Diameter="44" VerticalOptions="Start" />
+                            <Grid Grid.Column="1" ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                <Label Text="{Binding [feat3_title], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" FontSize="17" />
+                                <c:Badge Grid.Column="1" Text="{Binding [feat3_tag], Source={x:Static loc:Loc.Instance}}" Tone="Ok" VerticalOptions="Start" />
+                            </Grid>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding [feat3_text], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" />
+                        </Grid>
+                    </Border>
+                <Button Text="{Binding [welcome_create], Source={x:Static loc:Loc.Instance}}" Command="{Binding RegisterCommand}" Margin="0,8,0,0" />
+                <Button Style="{StaticResource SoftButton}" Text="{Binding [welcome_have_account], Source={x:Static loc:Loc.Instance}}" Command="{Binding LoginCommand}" />
+                <Button Style="{StaticResource TextButton}" Text="{Binding [welcome_guest], Source={x:Static loc:Loc.Instance}}" Command="{Binding GuestCommand}" />
+                <Border Style="{StaticResource SoftCard}" Padding="12">
+                    <Label Text="{Binding [welcome_note], Source={x:Static loc:Loc.Instance}}" FontSize="13" />
+                </Border>
+            </VerticalStackLayout>
+        </c:CenteredContent>
+    </ScrollView>
+</ContentPage>

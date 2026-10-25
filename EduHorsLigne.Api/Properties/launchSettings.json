@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "EduHorsLigne.Api (Windows)": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "admin/",
+      "applicationUrl": "http://localhost:5080",
+      "environmentVariables": { "ASPNETCORE_ENVIRONMENT": "Development" }
+    },
+    "EduHorsLigne.Api (réseau local, téléphone)": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "applicationUrl": "http://0.0.0.0:5080",
+      "environmentVariables": { "ASPNETCORE_ENVIRONMENT": "Development" }
+    }
+  }
+}

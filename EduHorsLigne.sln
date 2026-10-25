@@ -1,0 +1,28 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduHorsLigne", "EduHorsLigne\EduHorsLigne.csproj", "{6B1F3A52-4C7D-4E58-9A21-0D8E5B7C1A01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduHorsLigne.Api", "EduHorsLigne.Api\EduHorsLigne.Api.csproj", "{9C2E4B63-5D8E-4F69-8B32-1E9F6C8D2B02}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B1F3A52-4C7D-4E58-9A21-0D8E5B7C1A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B1F3A52-4C7D-4E58-9A21-0D8E5B7C1A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B1F3A52-4C7D-4E58-9A21-0D8E5B7C1A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B1F3A52-4C7D-4E58-9A21-0D8E5B7C1A01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C2E4B63-5D8E-4F69-8B32-1E9F6C8D2B02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C2E4B63-5D8E-4F69-8B32-1E9F6C8D2B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C2E4B63-5D8E-4F69-8B32-1E9F6C8D2B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C2E4B63-5D8E-4F69-8B32-1E9F6C8D2B02}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

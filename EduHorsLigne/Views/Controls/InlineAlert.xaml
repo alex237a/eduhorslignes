@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:loc="clr-namespace:EduHorsLigne.Helpers" xmlns:c="clr-namespace:EduHorsLigne.Views.Controls" xmlns:m="clr-namespace:EduHorsLigne.Models"
+             x:Class="EduHorsLigne.Views.Controls.InlineAlert">
+    <Border x:Name="Box" Padding="12" StrokeThickness="0">
+        <Border.StrokeShape><RoundRectangle CornerRadius="12" /></Border.StrokeShape>
+        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+            <Label x:Name="IconLabel" FontSize="18" VerticalOptions="Start" />
+            <Label x:Name="TextLabel" Grid.Column="1" FontSize="14" />
+        </Grid>
+    </Border>
+</ContentView>

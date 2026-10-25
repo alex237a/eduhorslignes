@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!--
+			Cibles :
+			 - Sous Windows : Windows en PREMIER (« Windows Machine » est alors la cible de démarrage), puis Android.
+			 - Ailleurs     : Android seul.
+			Pour compiler UNIQUEMENT pour Windows (sans le workload Android), mettre IncludeAndroid à false
+			ci-dessous ou ajouter -p:IncludeAndroid=false à la commande dotnet.
+		-->
+		<IncludeAndroid Condition="'$(IncludeAndroid)' == ''">true</IncludeAndroid>
+		<TargetFrameworks Condition="'$(IncludeAndroid)' == 'true'">net10.0-android</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">net10.0-windows10.0.19041.0;$(TargetFrameworks)</TargetFrameworks>
+
+		<OutputType>Exe</OutputType>
+		<RootNamespace>EduHorsLigne</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<NoWarn>$(NoWarn);MVVMTK0045;CS0618</NoWarn>
+
+		<ApplicationTitle>ÉduHors-Ligne</ApplicationTitle>
+		<ApplicationId>com.eduhorsligne.app</ApplicationId>
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<!-- Android 8.0 (API 26) minimum, conformément au cahier des charges -->
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">26.0</SupportedOSPlatformVersion>
+		<AndroidPackageFormat Condition="'$(Configuration)' == 'Debug'">apk</AndroidPackageFormat>
+
+		<!-- Windows 10 1809 minimum ; exécution NON empaquetée : pas de certificat ni d'installation MSIX -->
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<WindowsPackageType Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">None</WindowsPackageType>
+		<!-- Embarque le runtime Windows App SDK avec l'application : elle démarre même si ce runtime n'est pas installé sur le PC -->
+		<WindowsAppSDKSelfContained Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">true</WindowsAppSDKSelfContained>
+		<SelfContained Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">true</SelfContained>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#1F6F5C" />
+		<MauiImage Include="Resources\Images\*" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#1F6F5C" BaseSize="128,128" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
+	</ItemGroup>
+
+</Project>

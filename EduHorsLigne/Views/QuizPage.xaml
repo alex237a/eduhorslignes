@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.QuizPage"
+             x:DataType="vm:QuizViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [quiz_title], Source={x:Static loc:Loc.Instance}}" ShowBack="True" />
+        <Grid Grid.Row="1">
+
+    <Grid>
+        <ScrollView>
+            <c:CenteredContent MaxContentWidth="640">
+                <VerticalStackLayout Padding="16" Spacing="12">
+                    <VerticalStackLayout IsVisible="{Binding IsQuestion}" Spacing="12">
+                        <Label Text="{Binding ProgressText}" Style="{StaticResource CaptionLabel}" FontAttributes="Bold" />
+                        <ProgressBar Progress="{Binding ProgressValue}" />
+                        <Border Style="{StaticResource Card}">
+                            <Label Text="{Binding Current.Enonce}" Style="{StaticResource SubtitleLabel}" />
+                        </Border>
+                        <VerticalStackLayout Spacing="4" BindableLayout.ItemsSource="{Binding Current.Options}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="x:String"><RadioButton GroupName="quizOption" Content="{Binding .}" /></DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                            <Button Style="{StaticResource SecondaryButton}" Text="{Binding [previous], Source={x:Static loc:Loc.Instance}}" Command="{Binding PreviousCommand}" IsEnabled="{Binding CanGoBack}" />
+                            <Button Grid.Column="1" Text="{Binding [next], Source={x:Static loc:Loc.Instance}}" Command="{Binding NextCommand}" />
+                        </Grid>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout IsVisible="{Binding IsResult}" Spacing="12">
+                        <Border Style="{StaticResource Card}">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="{Binding [quiz_score], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" HorizontalOptions="Center" />
+                                <Label Text="{Binding ScoreText}" FontSize="40" FontAttributes="Bold" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Label Text="{Binding [quiz_correction], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" />
+                        <VerticalStackLayout Spacing="8" BindableLayout.ItemsSource="{Binding Corrections}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="m:ResultItem"><c:ResultCard /></DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                            <Button Style="{StaticResource SecondaryButton}" Text="{Binding [restart], Source={x:Static loc:Loc.Instance}}" Command="{Binding RestartCommand}" />
+                            <Button Grid.Column="1" Text="{Binding [close], Source={x:Static loc:Loc.Instance}}" Command="{Binding CloseCommand}" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </c:CenteredContent>
+        </ScrollView>
+        <c:StateOverlay State="{Binding State}" />
+    </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

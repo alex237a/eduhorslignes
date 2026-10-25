@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="app_name" xml:space="preserve"><value>EduOffline</value></data>
+  <data name="ok" xml:space="preserve"><value>OK</value></data>
+  <data name="cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="confirm" xml:space="preserve"><value>Confirm</value></data>
+  <data name="close" xml:space="preserve"><value>Close</value></data>
+  <data name="warning" xml:space="preserve"><value>Warning</value></data>
+  <data name="coming_soon" xml:space="preserve"><value>Coming soon: this feature will be connected with the backend.</value></data>
+  <data name="save" xml:space="preserve"><value>Save</value></data>
+  <data name="delete" xml:space="preserve"><value>Delete</value></data>
+  <data name="download" xml:space="preserve"><value>Download</value></data>
+  <data name="read" xml:space="preserve"><value>Read lesson</value></data>
+  <data name="next" xml:space="preserve"><value>Next</value></data>
+  <data name="previous" xml:space="preserve"><value>Previous</value></data>
+  <data name="finish" xml:space="preserve"><value>Finish</value></data>
+  <data name="validate" xml:space="preserve"><value>Submit my answers</value></data>
+  <data name="retry" xml:space="preserve"><value>Try again</value></data>
+  <data name="restart" xml:space="preserve"><value>Restart</value></data>
+  <data name="resume" xml:space="preserve"><value>Start / Resume</value></data>
+  <data name="verify" xml:space="preserve"><value>Verify</value></data>
+  <data name="days" xml:space="preserve"><value>days</value></data>
+  <data name="mode" xml:space="preserve"><value>Mode</value></data>
+  <data name="history" xml:space="preserve"><value>Attempt history</value></data>
+  <data name="favorite" xml:space="preserve"><value>Favorite</value></data>
+  <data name="bookmark" xml:space="preserve"><value>Bookmark</value></data>
+  <data name="note" xml:space="preserve"><value>Note</value></data>
+  <data name="highlight" xml:space="preserve"><value>Highlight</value></data>
+  <data name="toc" xml:space="preserve"><value>Contents</value></data>
+  <data name="tab_home" xml:space="preserve"><value>Home</value></data>
+  <data name="tab_search" xml:space="preserve"><value>Search</value></data>
+  <data name="tab_library" xml:space="preserve"><value>Library</value></data>
+  <data name="tab_progress" xml:space="preserve"><value>Progress</value></data>
+  <data name="tab_profile" xml:space="preserve"><value>Profile</value></data>
+  <data name="tab_lessons" xml:space="preserve"><value>Lessons</value></data>
+  <data name="tab_exercises" xml:space="preserve"><value>Exercises</value></data>
+  <data name="onb1_title" xml:space="preserve"><value>Your lessons, anywhere</value></data>
+  <data name="onb1_text" xml:space="preserve"><value>Find your class lessons, organised by subject and chapter.</value></data>
+  <data name="onb2_title" xml:space="preserve"><value>Download once, read offline</value></data>
+  <data name="onb2_text" xml:space="preserve"><value>Once downloaded, your lessons stay readable without a connection.</value></data>
+  <data name="onb3_title" xml:space="preserve"><value>Revise and progress</value></data>
+  <data name="onb3_text" xml:space="preserve"><value>Notes, bookmarks, exercises and progress tracking to revise efficiently.</value></data>
+  <data name="onb_skip" xml:space="preserve"><value>Skip</value></data>
+  <data name="onb_next" xml:space="preserve"><value>Next</value></data>
+  <data name="onb_start" xml:space="preserve"><value>Get started</value></data>
+  <data name="login_title" xml:space="preserve"><value>Welcome back!</value></data>
+  <data name="login_subtitle" xml:space="preserve"><value>Sign in to find your lessons.</value></data>
+  <data name="login_button" xml:space="preserve"><value>Sign in  →</value></data>
+  <data name="forgot_link" xml:space="preserve"><value>Forgot password?</value></data>
+  <data name="register_link" xml:space="preserve"><value>Create an account</value></data>
+  <data name="field_identifier" xml:space="preserve"><value>E-mail or phone</value></data>
+  <data name="ph_identifier" xml:space="preserve"><value>example@mail.com or +237 6XX XXX XXX</value></data>
+  <data name="field_password" xml:space="preserve"><value>Password</value></data>
+  <data name="ph_password" xml:space="preserve"><value>Your password</value></data>
+  <data name="show_hide_password" xml:space="preserve"><value>Show or hide password</value></data>
+  <data name="register_title" xml:space="preserve"><value>Create an account</value></data>
+  <data name="field_lastname" xml:space="preserve"><value>Last name</value></data>
+  <data name="field_firstname" xml:space="preserve"><value>First name</value></data>
+  <data name="field_confirm" xml:space="preserve"><value>Confirm password</value></data>
+  <data name="field_new_password" xml:space="preserve"><value>New password</value></data>
+  <data name="field_subsystem" xml:space="preserve"><value>Subsystem</value></data>
+  <data name="field_class" xml:space="preserve"><value>Class</value></data>
+  <data name="sub_fr" xml:space="preserve"><value>Francophone</value></data>
+  <data name="sub_en" xml:space="preserve"><value>Anglophone</value></data>
+  <data name="accept_terms" xml:space="preserve"><value>I accept the terms of use</value></data>
+  <data name="register_button" xml:space="preserve"><value>Sign up</value></data>
+  <data name="have_account" xml:space="preserve"><value>I already have an account</value></data>
+  <data name="forgot_title" xml:space="preserve"><value>Forgot password</value></data>
+  <data name="forgot_text" xml:space="preserve"><value>Enter your identifier: we will send you a one-time code.</value></data>
+  <data name="send_code" xml:space="preserve"><value>Send code</value></data>
+  <data name="otp_title" xml:space="preserve"><value>Verification code</value></data>
+  <data name="otp_text" xml:space="preserve"><value>Enter the 6-digit code received by SMS or e-mail.</value></data>
+  <data name="otp_field" xml:space="preserve"><value>6-digit code</value></data>
+  <data name="resend_code" xml:space="preserve"><value>Resend code</value></data>
+  <data name="newpwd_title" xml:space="preserve"><value>New password</value></data>
+  <data name="pwd_weak" xml:space="preserve"><value>Strength: weak</value></data>
+  <data name="pwd_medium" xml:space="preserve"><value>Strength: medium</value></data>
+  <data name="pwd_strong" xml:space="preserve"><value>Strength: strong</value></data>
+  <data name="err_identifier" xml:space="preserve"><value>Enter a valid e-mail or a Cameroonian number (+237, 9 digits).</value></data>
+  <data name="err_password_short" xml:space="preserve"><value>The password must contain at least 8 characters.</value></data>
+  <data name="err_confirm" xml:space="preserve"><value>Passwords do not match.</value></data>
+  <data name="err_login" xml:space="preserve"><value>Incorrect identifier or password. Check your details or use “Forgot password”.</value></data>
+  <data name="err_network" xml:space="preserve"><value>No Internet connection. Turn on Wi-Fi or mobile data and try again.</value></data>
+  <data name="err_space" xml:space="preserve"><value>Not enough storage. Delete lessons in “Storage” to free up space.</value></data>
+  <data name="err_corrupt" xml:space="preserve"><value>Corrupted file. The download will restart automatically.</value></data>
+  <data name="ok_download" xml:space="preserve"><value>Lesson downloaded: it is available offline.</value></data>
+  <data name="offline_banner" xml:space="preserve"><value>📴 Offline mode: your downloaded lessons remain available.</value></data>
+  <data name="home_offline_session" xml:space="preserve"><value>● OFFLINE SESSION ACTIVE</value></data>
+  <data name="home_hello" xml:space="preserve"><value>Hello</value></data>
+  <data name="home_continue" xml:space="preserve"><value>CONTINUE READING</value></data>
+  <data name="home_continue_btn" xml:space="preserve"><value>Continue</value></data>
+  <data name="home_resume_exercise" xml:space="preserve"><value>RESUME MY EXERCISE</value></data>
+  <data name="home_resume_btn" xml:space="preserve"><value>Resume</value></data>
+  <data name="go_search" xml:space="preserve"><value>🔍 Search</value></data>
+  <data name="go_progress" xml:space="preserve"><value>📈 My progress</value></data>
+  <data name="home_my_subjects" xml:space="preserve"><value>My subjects</value></data>
+  <data name="lessons_unit" xml:space="preserve"><value>lessons completed</value></data>
+  <data name="empty_home_title" xml:space="preserve"><value>No lessons yet</value></data>
+  <data name="empty_home_text" xml:space="preserve"><value>Choose a subject to download your first lessons. They will stay readable without Internet.</value></data>
+  <data name="empty_home_btn" xml:space="preserve"><value>Browse subjects</value></data>
+  <data name="filter_title" xml:space="preserve"><value>Filter</value></data>
+  <data name="filter_all" xml:space="preserve"><value>All</value></data>
+  <data name="filter_downloaded" xml:space="preserve"><value>Downloaded</value></data>
+  <data name="filter_unread" xml:space="preserve"><value>Unread</value></data>
+  <data name="filter_done" xml:space="preserve"><value>Completed</value></data>
+  <data name="filter_fav" xml:space="preserve"><value>Favorites</value></data>
+  <data name="filter_empty" xml:space="preserve"><value>No results for this filter.</value></data>
+  <data name="download_subject" xml:space="preserve"><value>⬇ Subject</value></data>
+  <data name="lesson_title" xml:space="preserve"><value>Lesson details</value></data>
+  <data name="meta_subject" xml:space="preserve"><value>Subject</value></data>
+  <data name="meta_chapter" xml:space="preserve"><value>Chapter</value></data>
+  <data name="meta_duration" xml:space="preserve"><value>Estimated time</value></data>
+  <data name="meta_size" xml:space="preserve"><value>Size</value></data>
+  <data name="meta_updated" xml:space="preserve"><value>Last update</value></data>
+  <data name="lesson_preview" xml:space="preserve"><value>Preview: this lesson covers the definition of an arithmetic sequence, its properties and the sum formula.</value></data>
+  <data name="exercises" xml:space="preserve"><value>Exercises</value></data>
+  <data name="quiz" xml:space="preserve"><value>Quiz</value></data>
+  <data name="reader_settings" xml:space="preserve"><value>Display settings</value></data>
+  <data name="reader_text_size" xml:space="preserve"><value>Text size</value></data>
+  <data name="reader_line_spacing" xml:space="preserve"><value>Line spacing</value></data>
+  <data name="search_placeholder" xml:space="preserve"><value>Search a lesson, a keyword…</value></data>
+  <data name="search_history" xml:space="preserve"><value>Recent searches</value></data>
+  <data name="search_none_title" xml:space="preserve"><value>No results</value></data>
+  <data name="search_none_text" xml:space="preserve"><value>Check the spelling or try another keyword.</value></data>
+  <data name="search_all" xml:space="preserve"><value>Everything</value></data>
+  <data name="search_subject" xml:space="preserve"><value>This subject</value></data>
+  <data name="search_class" xml:space="preserve"><value>This class</value></data>
+  <data name="search_notes" xml:space="preserve"><value>My notes</value></data>
+  <data name="search_exercises" xml:space="preserve"><value>Exercises</value></data>
+  <data name="lib_favorites" xml:space="preserve"><value>Favorites</value></data>
+  <data name="lib_notes" xml:space="preserve"><value>Notes</value></data>
+  <data name="lib_bookmarks" xml:space="preserve"><value>Bookmarks</value></data>
+  <data name="lib_redo" xml:space="preserve"><value>To redo</value></data>
+  <data name="lib_all_subjects" xml:space="preserve"><value>All subjects</value></data>
+  <data name="lib_empty_text" xml:space="preserve"><value>Add content from the reader to find it here.</value></data>
+  <data name="lib_empty_fav" xml:space="preserve"><value>No favorites</value></data>
+  <data name="lib_empty_notes" xml:space="preserve"><value>No notes</value></data>
+  <data name="lib_empty_bm" xml:space="preserve"><value>No bookmarks</value></data>
+  <data name="lib_empty_redo" xml:space="preserve"><value>Nothing to redo</value></data>
+  <data name="progress_global" xml:space="preserve"><value>OVERALL PROGRESS</value></data>
+  <data name="progress_time" xml:space="preserve"><value>Study time</value></data>
+  <data name="progress_streak" xml:space="preserve"><value>Streak</value></data>
+  <data name="progress_goal" xml:space="preserve"><value>Weekly goal</value></data>
+  <data name="progress_goal_text" xml:space="preserve"><value>Lessons completed this week</value></data>
+  <data name="progress_exercises" xml:space="preserve"><value>Exercises</value></data>
+  <data name="progress_ex_done" xml:space="preserve"><value>Exercises completed</value></data>
+  <data name="progress_ex_avg" xml:space="preserve"><value>Average</value></data>
+  <data name="progress_ex_review" xml:space="preserve"><value>Chapter to review</value></data>
+  <data name="progress_by_subject" xml:space="preserve"><value>By subject</value></data>
+  <data name="progress_reset" xml:space="preserve"><value>Reset a subject</value></data>
+  <data name="reset_warning" xml:space="preserve"><value>Progress for this subject will be reset. Your notes and favorites are kept.</value></data>
+  <data name="storage_title" xml:space="preserve"><value>Storage</value></data>
+  <data name="storage_used" xml:space="preserve"><value>Used:</value></data>
+  <data name="storage_free" xml:space="preserve"><value>Free:</value></data>
+  <data name="storage_note" xml:space="preserve"><value>Deleting a lesson keeps your notes, bookmarks, favorites and progress.</value></data>
+  <data name="delete_storage_warning" xml:space="preserve"><value>This subject's files will be removed from your phone. Your notes, bookmarks, favorites and progress are kept.</value></data>
+  <data name="quiz_title" xml:space="preserve"><value>Quiz</value></data>
+  <data name="quiz_score" xml:space="preserve"><value>Your score</value></data>
+  <data name="quiz_correction" xml:space="preserve"><value>Explained answers</value></data>
+  <data name="your_answer" xml:space="preserve"><value>Your answer:</value></data>
+  <data name="right_answer" xml:space="preserve"><value>Right answer:</value></data>
+  <data name="exlist_title" xml:space="preserve"><value>Exercises</value></data>
+  <data name="exlist_empty_title" xml:space="preserve"><value>No exercises</value></data>
+  <data name="best_score" xml:space="preserve"><value>Best score:</value></data>
+  <data name="filter_subject" xml:space="preserve"><value>Subject</value></data>
+  <data name="filter_chapter" xml:space="preserve"><value>Chapter</value></data>
+  <data name="filter_level" xml:space="preserve"><value>Difficulty</value></data>
+  <data name="filter_status" xml:space="preserve"><value>Status</value></data>
+  <data name="filter_all_subjects" xml:space="preserve"><value>All subjects</value></data>
+  <data name="filter_all_chapters" xml:space="preserve"><value>All chapters</value></data>
+  <data name="filter_all_levels" xml:space="preserve"><value>All levels</value></data>
+  <data name="filter_all_status" xml:space="preserve"><value>All statuses</value></data>
+  <data name="exdetail_title" xml:space="preserve"><value>Exercise</value></data>
+  <data name="instructions" xml:space="preserve"><value>Instructions</value></data>
+  <data name="instructions_text" xml:space="preserve"><value>Answer each question. You can use hints; they reduce your score. Your answers are saved automatically.</value></data>
+  <data name="mode_revision" xml:space="preserve"><value>Revision mode (no time limit, with hints)</value></data>
+  <data name="mode_timed" xml:space="preserve"><value>Timed mode (mock exam)</value></data>
+  <data name="restart_exercise" xml:space="preserve"><value>Restart exercise</value></data>
+  <data name="exsolve_title" xml:space="preserve"><value>Solving</value></data>
+  <data name="quit" xml:space="preserve"><value>Quit</value></data>
+  <data name="quit_title" xml:space="preserve"><value>Quit the exercise?</value></data>
+  <data name="quit_message" xml:space="preserve"><value>Your answers are saved: you can resume later.</value></data>
+  <data name="true_label" xml:space="preserve"><value>True</value></data>
+  <data name="false_label" xml:space="preserve"><value>False</value></data>
+  <data name="answer_blank" xml:space="preserve"><value>Fill in here</value></data>
+  <data name="answer_short" xml:space="preserve"><value>Your answer</value></data>
+  <data name="answer_essay" xml:space="preserve"><value>Write your solution here…</value></data>
+  <data name="hint" xml:space="preserve"><value>💡 Hint</value></data>
+  <data name="recap_title" xml:space="preserve"><value>Summary</value></data>
+  <data name="recap_text" xml:space="preserve"><value>Check your answers before submitting.</value></data>
+  <data name="result_title" xml:space="preserve"><value>Results and corrections</value></data>
+  <data name="result_detail" xml:space="preserve"><value>Question by question</value></data>
+  <data name="self_eval" xml:space="preserve"><value>Self-assessment of the written problem</value></data>
+  <data name="self_eval_text" xml:space="preserve"><value>Compare your answer to the model solution, then rate yourself.</value></data>
+  <data name="self_success" xml:space="preserve"><value>Succeeded</value></data>
+  <data name="self_partial" xml:space="preserve"><value>Partial</value></data>
+  <data name="self_review" xml:space="preserve"><value>To review</value></data>
+  <data name="redo_failed" xml:space="preserve"><value>Redo failed questions</value></data>
+  <data name="report_error" xml:space="preserve"><value>Report an error</value></data>
+  <data name="add_favorite" xml:space="preserve"><value>Add to favorites</value></data>
+  <data name="finish_and_home" xml:space="preserve"><value>Finish and go home</value></data>
+  <data name="profile_settings" xml:space="preserve"><value>⚙  Settings</value></data>
+  <data name="profile_storage" xml:space="preserve"><value>💾  Storage</value></data>
+  <data name="profile_help" xml:space="preserve"><value>❓  Help</value></data>
+  <data name="profile_logout" xml:space="preserve"><value>Sign out</value></data>
+  <data name="logout_title" xml:space="preserve"><value>Sign out</value></data>
+  <data name="logout_message" xml:space="preserve"><value>Do you want to keep your local data on this device?</value></data>
+  <data name="logout_keep" xml:space="preserve"><value>Keep</value></data>
+  <data name="logout_erase" xml:space="preserve"><value>Erase</value></data>
+  <data name="settings_title" xml:space="preserve"><value>Settings</value></data>
+  <data name="settings_language" xml:space="preserve"><value>Language</value></data>
+  <data name="settings_display" xml:space="preserve"><value>Display</value></data>
+  <data name="settings_dark" xml:space="preserve"><value>Dark theme</value></data>
+  <data name="settings_text_size" xml:space="preserve"><value>Text size</value></data>
+  <data name="settings_preview" xml:space="preserve"><value>Preview: Revise without Internet.</value></data>
+  <data name="settings_wifi" xml:space="preserve"><value>Download over Wi-Fi only</value></data>
+  <data name="settings_notifications" xml:space="preserve"><value>Revision reminders</value></data>
+  <data name="settings_pin" xml:space="preserve"><value>PIN code</value></data>
+  <data name="settings_help" xml:space="preserve"><value>Help and FAQ</value></data>
+  <data name="settings_demo" xml:space="preserve"><value>Demo mode: page state</value></data>
+  <data name="settings_demo_text" xml:space="preserve"><value>Shows pages in the chosen state (content, loading, empty, error).</value></data>
+  <data name="settings_gallery" xml:space="preserve"><value>States gallery</value></data>
+  <data name="state_content" xml:space="preserve"><value>Content</value></data>
+  <data name="state_loading" xml:space="preserve"><value>Loading</value></data>
+  <data name="state_empty" xml:space="preserve"><value>Empty</value></data>
+  <data name="state_error" xml:space="preserve"><value>Error</value></data>
+  <data name="delete_account" xml:space="preserve"><value>Delete my account</value></data>
+  <data name="delete_account_warning" xml:space="preserve"><value>Your account and personal data will be permanently deleted.</value></data>
+  <data name="help_title" xml:space="preserve"><value>Help</value></data>
+  <data name="help_faq" xml:space="preserve"><value>Frequently asked questions</value></data>
+  <data name="state_loading_text" xml:space="preserve"><value>Loading…</value></data>
+  <data name="state_empty_title" xml:space="preserve"><value>Nothing to show</value></data>
+  <data name="state_empty_text" xml:space="preserve"><value>No content available right now.</value></data>
+  <data name="state_error_title" xml:space="preserve"><value>Something went wrong</value></data>
+  <data name="state_error_text" xml:space="preserve"><value>Unable to display this page. Please try again.</value></data>
+  <data name="gal_fields" xml:space="preserve"><value>Form fields</value></data>
+  <data name="gal_normal" xml:space="preserve"><value>Normal</value></data>
+  <data name="gal_filled" xml:space="preserve"><value>Active / filled</value></data>
+  <data name="gal_error" xml:space="preserve"><value>Error</value></data>
+  <data name="gal_disabled" xml:space="preserve"><value>Disabled</value></data>
+  <data name="gal_buttons" xml:space="preserve"><value>Buttons</value></data>
+  <data name="gal_primary" xml:space="preserve"><value>Primary</value></data>
+  <data name="gal_secondary" xml:space="preserve"><value>Secondary</value></data>
+  <data name="gal_text" xml:space="preserve"><value>Text</value></data>
+  <data name="gal_lessons" xml:space="preserve"><value>Lesson rows (all statuses)</value></data>
+  <data name="gal_badges" xml:space="preserve"><value>Difficulty and status badges</value></data>
+  <data name="gal_sync" xml:space="preserve"><value>Sync and offline</value></data>
+  <data name="gal_empty" xml:space="preserve"><value>Empty state</value></data>
+  <data name="gal_loading" xml:space="preserve"><value>Loading</value></data>
+  <data name="gal_errors" xml:space="preserve"><value>Error messages (FR / EN)</value></data>
+  <data name="badge_notdownloaded" xml:space="preserve"><value>Not downloaded</value></data>
+  <data name="badge_downloaded" xml:space="preserve"><value>Downloaded</value></data>
+  <data name="badge_read" xml:space="preserve"><value>Read</value></data>
+  <data name="badge_completed" xml:space="preserve"><value>Completed</value></data>
+  <data name="badge_updateavailable" xml:space="preserve"><value>Update available</value></data>
+  <data name="badge_failed" xml:space="preserve"><value>Failed</value></data>
+  <data name="badge_easy" xml:space="preserve"><value>Easy</value></data>
+  <data name="badge_medium" xml:space="preserve"><value>Medium</value></data>
+  <data name="badge_hard" xml:space="preserve"><value>Hard</value></data>
+  <data name="badge_notstarted" xml:space="preserve"><value>Not started</value></data>
+  <data name="badge_inprogress" xml:space="preserve"><value>In progress</value></data>
+  <data name="badge_done" xml:space="preserve"><value>Done</value></data>
+  <data name="badge_correct" xml:space="preserve"><value>Correct</value></data>
+  <data name="badge_partial" xml:space="preserve"><value>Partial</value></data>
+  <data name="badge_incorrect" xml:space="preserve"><value>Incorrect</value></data>
+  <data name="badge_sync_ok" xml:space="preserve"><value>Up to date</value></data>
+  <data name="badge_sync_pending" xml:space="preserve"><value>Pending</value></data>
+  <data name="badge_sync_failed" xml:space="preserve"><value>Sync failed</value></data>
+  <data name="accept_terms_long" xml:space="preserve"><value>I fully accept the Terms of Use and the local storage of courses on my phone.</value></data>
+  <data name="all_button" xml:space="preserve"><value>All ↓</value></data>
+  <data name="already_registered" xml:space="preserve"><value>Already registered?</value></data>
+  <data name="annales_text" xml:space="preserve"><value>3 other exam papers contain this word</value></data>
+  <data name="annales_title" xml:space="preserve"><value>National past papers</value></data>
+  <data name="back" xml:space="preserve"><value>Back</value></data>
+  <data name="catalogue_offline_note" xml:space="preserve"><value>The catalogue stays available offline, even for lessons that are not downloaded. Summary sheets and text exercises remain instantly accessible.</value></data>
+  <data name="chip_offline" xml:space="preserve"><value>● Offline</value></data>
+  <data name="chip_ready_offline" xml:space="preserve"><value>Offline ready</value></data>
+  <data name="clear" xml:space="preserve"><value>Clear search</value></data>
+  <data name="clear_text" xml:space="preserve"><value>Clear</value></data>
+  <data name="corr_available" xml:space="preserve"><value>✔ Available offline</value></data>
+  <data name="corr_bar" xml:space="preserve"><value>Exercises &amp; Solutions</value></data>
+  <data name="corr_guide" xml:space="preserve"><value>▤ MINESEC marking guide</value></data>
+  <data name="corr_method_text" xml:space="preserve"><value>Method: identify the theorem to apply, check its assumptions (continuity, monotonicity), compute the images of the bounds, then conclude by citing the theorem.</value></data>
+  <data name="corr_next" xml:space="preserve"><value>Next exercise (Ex 2) →</value></data>
+  <data name="corr_official_wording" xml:space="preserve"><value>OFFICIAL EXAM WORDING</value></data>
+  <data name="corr_statement_full" xml:space="preserve"><value>Full statement: consider the function f defined on ℝ by f(x) = x³ + 2x − 5. 1) Study the variations of f. 2.a) Compute f'(x). 2.b) Prove that f(x) = 0 has a unique solution α in [1 ; 2].</value></data>
+  <data name="corr_steps_valid" xml:space="preserve"><value>4 steps validated</value></data>
+  <data name="corr_tip_text" xml:space="preserve"><value>Never forget to state the strict monotonicity (increasing or decreasing) to justify the uniqueness of the root α. Continuity alone guarantees existence, not uniqueness!</value></data>
+  <data name="corr_tip_title" xml:space="preserve"><value>MINESEC inspector's tip</value></data>
+  <data name="data_tip_text" xml:space="preserve"><value>Prefer Wi-Fi to download a whole subject at once and revise peacefully anywhere.</value></data>
+  <data name="data_tip_title" xml:space="preserve"><value>Data-saving tip</value></data>
+  <data name="download_all_subject" xml:space="preserve"><value>Download the whole subject</value></data>
+  <data name="eco_mode" xml:space="preserve"><value>Eco-Data mode on</value></data>
+  <data name="eco_mode_text" xml:space="preserve"><value>Compressed sign-up &lt; 8 KB</value></data>
+  <data name="empty_home_guide" xml:space="preserve"><value>Read the user guide</value></data>
+  <data name="empty_recommended" xml:space="preserve"><value>RECOMMENDED SUBJECTS (TLE C)</value></data>
+  <data name="err_cgu" xml:space="preserve"><value>You must accept the terms of use.</value></data>
+  <data name="err_identifier_long" xml:space="preserve"><value>Incomplete identifier. Expected: +237 followed by 9 digits, or a valid e-mail address.</value></data>
+  <data name="err_login_attempts" xml:space="preserve"><value>You have {0} attempts left before your local session is temporarily locked.</value></data>
+  <data name="err_login_title" xml:space="preserve"><value>Incorrect identifier or password</value></data>
+  <data name="err_password_weak" xml:space="preserve"><value>Password too weak: at least 8 characters, including an uppercase letter and a digit.</value></data>
+  <data name="err_summary" xml:space="preserve"><value>{0} fields need your attention.</value></data>
+  <data name="err_summary_text" xml:space="preserve"><value>Fix them to continue the offline sign-up.</value></data>
+  <data name="ex_advised" xml:space="preserve"><value>Advised</value></data>
+  <data name="ex_bank_text" xml:space="preserve"><value>48 exercises available · 12 official past papers with solutions</value></data>
+  <data name="ex_bank_title" xml:space="preserve"><value>Offline exercise bank</value></data>
+  <data name="ex_bar" xml:space="preserve"><value>Exercises and Past Papers</value></data>
+  <data name="ex_by_chapter" xml:space="preserve"><value>Exercises by Chapter</value></data>
+  <data name="ex_corrected" xml:space="preserve"><value>Solved</value></data>
+  <data name="ex_difficulty_up" xml:space="preserve"><value>DIFFICULTY</value></data>
+  <data name="ex_download_pack" xml:space="preserve"><value>⬇ Download Tle C pack (14 MB)</value></data>
+  <data name="ex_duration" xml:space="preserve"><value>Duration</value></data>
+  <data name="ex_filter_all" xml:space="preserve"><value>All (18)</value></data>
+  <data name="ex_in_progress" xml:space="preserve"><value>◐ In progress (Ex 1 done)</value></data>
+  <data name="ex_offline_note" xml:space="preserve"><value>All statements and detailed solutions are saved on your device to revise offline, with no data cost and while saving battery.</value></data>
+  <data name="ex_program_tag" xml:space="preserve"><value>Tle C programme</value></data>
+  <data name="ex_recommended" xml:space="preserve"><value>✦ Recommended sets for the Bac</value></data>
+  <data name="ex_resume_session" xml:space="preserve"><value>▷ Resume session</value></data>
+  <data name="ex_scale" xml:space="preserve"><value>Marks</value></data>
+  <data name="ex_scale_up" xml:space="preserve"><value>MARKS</value></data>
+  <data name="ex_search" xml:space="preserve"><value>Search a paper, a chapter…</value></data>
+  <data name="ex_synced" xml:space="preserve"><value>SYNCED</value></data>
+  <data name="ex_time_up" xml:space="preserve"><value>TIME</value></data>
+  <data name="ex_volume" xml:space="preserve"><value>Volume</value></data>
+  <data name="ex_zero_data" xml:space="preserve"><value>ZERO-DATA MODE</value></data>
+  <data name="feat1_tag" xml:space="preserve"><value>0 MB / day</value></data>
+  <data name="feat1_text" xml:space="preserve"><value>Download once over Wi-Fi or share via Bluetooth/local USB key. Study without eating into your data plan.</value></data>
+  <data name="feat1_title" xml:space="preserve"><value>100% Standalone</value></data>
+  <data name="feat2_tag" xml:space="preserve"><value>Series A, C, D, TI</value></data>
+  <data name="feat2_text" xml:space="preserve"><value>Francophone &amp; Anglophone subsystems from Form 2 to Upper Sixth, written and validated by education inspectors.</value></data>
+  <data name="feat2_title" xml:space="preserve"><value>Official Programmes</value></data>
+  <data name="feat3_tag" xml:space="preserve"><value>Model solutions</value></data>
+  <data name="feat3_text" xml:space="preserve"><value>Timed exam simulator, detailed step-by-step solutions and a personalised progress radar.</value></data>
+  <data name="feat3_title" xml:space="preserve"><value>Tracking &amp; Self-assessment</value></data>
+  <data name="field_class_up" xml:space="preserve"><value>CLASS</value></data>
+  <data name="field_confirm_up" xml:space="preserve"><value>CONFIRM PASSWORD</value></data>
+  <data name="field_firstname_up" xml:space="preserve"><value>FIRST NAME</value></data>
+  <data name="field_identifier_long" xml:space="preserve"><value>Identifier (e-mail or phone)</value></data>
+  <data name="field_identifier_up" xml:space="preserve"><value>IDENTIFIER</value></data>
+  <data name="field_lastname_up" xml:space="preserve"><value>LAST NAME</value></data>
+  <data name="field_new_password_up" xml:space="preserve"><value>NEW PASSWORD</value></data>
+  <data name="field_password_up" xml:space="preserve"><value>PASSWORD</value></data>
+  <data name="field_subsystem_long" xml:space="preserve"><value>Cameroonian education subsystem</value></data>
+  <data name="free_space" xml:space="preserve"><value>· Free space:</value></data>
+  <data name="guest_button" xml:space="preserve"><value>👤  Continue as guest</value></data>
+  <data name="home_class_sub" xml:space="preserve"><value>Terminale C · Francophone subsystem</value></data>
+  <data name="home_continue_chip" xml:space="preserve"><value>▶ Continue reading</value></data>
+  <data name="home_info" xml:space="preserve"><value>3 downloaded lessons are still unread. Everything is available offline without an internet connection.</value></data>
+  <data name="home_subsystem_fr" xml:space="preserve"><value>Francophone subsystem</value></data>
+  <data name="lesson_certified" xml:space="preserve"><value>▣ Certified course sheet</value></data>
+  <data name="lesson_class_tag" xml:space="preserve"><value>▤ Terminal Bac C</value></data>
+  <data name="lesson_program" xml:space="preserve"><value>Official MINESEC programme · Mathematics Terminale Scientific</value></data>
+  <data name="lesson_statement_text" xml:space="preserve"><value>Let f be a continuous function on an interval I. Then f takes every value between f(a) and f(b) for a and b in I.</value></data>
+  <data name="lesson_statement_title" xml:space="preserve"><value>▤ Statement of the fundamental theorem</value></data>
+  <data name="listen" xml:space="preserve"><value>Listen to the lesson</value></data>
+  <data name="login_busy" xml:space="preserve"><value>Signing in…</value></data>
+  <data name="login_footer" xml:space="preserve"><value>BEPC &amp; BAC exam bank available offline</value></data>
+  <data name="login_info" xml:space="preserve"><value>The first sign-in requires Internet. After that, the app works entirely offline so you can revise anywhere in Cameroon.</value></data>
+  <data name="login_link" xml:space="preserve"><value>Sign in</value></data>
+  <data name="mask" xml:space="preserve"><value>👁 Hide</value></data>
+  <data name="show" xml:space="preserve"><value>👁 Show</value></data>
+  <data name="meta_reading" xml:space="preserve"><value>Reading</value></data>
+  <data name="no_account" xml:space="preserve"><value>No account yet?</value></data>
+  <data name="official_program" xml:space="preserve"><value>Official programme</value></data>
+  <data name="official_program_text" xml:space="preserve"><value>Final cycle · National BEPC and BAC exams</value></data>
+  <data name="official_program_up" xml:space="preserve"><value>OFFICIAL PROGRAMME</value></data>
+  <data name="or" xml:space="preserve"><value>OR</value></data>
+  <data name="otp_bar" xml:space="preserve"><value>Verification</value></data>
+  <data name="otp_code_up" xml:space="preserve"><value>VERIFICATION CODE</value></data>
+  <data name="otp_not_received" xml:space="preserve"><value>Code not received?</value></data>
+  <data name="otp_resend" xml:space="preserve"><value>Resend code (00:42)</value></data>
+  <data name="otp_sms_note" xml:space="preserve"><value>Works even without active Internet via SMS</value></data>
+  <data name="otp_step" xml:space="preserve"><value>▪ STEP 2 · SECURITY</value></data>
+  <data name="otp_submit" xml:space="preserve"><value>↻ Confirm new password</value></data>
+  <data name="otp_text_long" xml:space="preserve"><value>A 6-digit code was sent to +237 6•• ••• •78. Enter it, then choose a new password.</value></data>
+  <data name="otp_valid" xml:space="preserve"><value>◷ Code valid for 10 minutes.</value></data>
+  <data name="pause" xml:space="preserve"><value>Pause</value></data>
+  <data name="ph_confirm" xml:space="preserve"><value>Retype the password</value></data>
+  <data name="ph_new_password" xml:space="preserve"><value>8 characters minimum</value></data>
+  <data name="progress_label" xml:space="preserve"><value>Progress</value></data>
+  <data name="pwd_hint" xml:space="preserve"><value>8 characters minimum, including an uppercase letter and a digit.</value></data>
+  <data name="pwd_required" xml:space="preserve"><value>Required: Strong</value></data>
+  <data name="pwd_strength" xml:space="preserve"><value>Password strength: {0}%</value></data>
+  <data name="reader_2q" xml:space="preserve"><value>2 questions</value></data>
+  <data name="reader_available" xml:space="preserve"><value>● Available offline · 1.4 MB</value></data>
+  <data name="reader_bar" xml:space="preserve"><value>Course reader</value></data>
+  <data name="reader_chapter_progress" xml:space="preserve"><value>Chapter progress</value></data>
+  <data name="reader_dark_header" xml:space="preserve"><value>📖 MATHEMATICS · CH. 1</value></data>
+  <data name="reader_dark_meta" xml:space="preserve"><value>⏱ 11 min  •  ☾ Dark mode on</value></data>
+  <data name="reader_dark_mode" xml:space="preserve"><value>Dark mode</value></data>
+  <data name="reader_definition" xml:space="preserve"><value>◎ DEFINITION</value></data>
+  <data name="reader_energy_text" xml:space="preserve"><value>The dark theme actively reduces battery use on OLED screens and gives optimal reading comfort for late-night revision.</value></data>
+  <data name="reader_energy_title" xml:space="preserve"><value>Energy &amp; night optimisation</value></data>
+  <data name="reader_example_up" xml:space="preserve"><value>💡 TYPICAL BAC EXAMPLE</value></data>
+  <data name="reader_existence_up" xml:space="preserve"><value>EXISTENCE EQUATION</value></data>
+  <data name="reader_figure" xml:space="preserve"><value>Figure 1.1 · Topological property of continuity</value></data>
+  <data name="reader_flash_text" xml:space="preserve"><value>Ready to check your mastery of the IVT?</value></data>
+  <data name="reader_meta" xml:space="preserve"><value>⏱ 11 min read • Updated on 12/09/2026</value></data>
+  <data name="reader_method3" xml:space="preserve"><value>● Method in 3 steps</value></data>
+  <data name="reader_remark" xml:space="preserve"><value>Note: if f is also strictly monotonic, the real c is unique (Bijection corollary).</value></data>
+  <data name="reader_section" xml:space="preserve"><value>◉ Section 3 of 8</value></data>
+  <data name="reader_sync" xml:space="preserve"><value>⟳ Auto sync</value></data>
+  <data name="reader_validity_up" xml:space="preserve"><value>VALIDITY CONDITION</value></data>
+  <data name="register_intro" xml:space="preserve"><value>Enter your details to personalise your lesson catalogue.</value></data>
+  <data name="remember_me" xml:space="preserve"><value>Remember me</value></data>
+  <data name="required_bac" xml:space="preserve"><value>Required for Bac</value></data>
+  <data name="result_axis_text" xml:space="preserve"><value>Always state rigorously: “f is continuous and strictly monotonic on [a, b]…”.</value></data>
+  <data name="result_axis_title" xml:space="preserve"><value>🎓 MINESEC regulatory focus</value></data>
+  <data name="result_bar" xml:space="preserve"><value>Past paper solutions</value></data>
+  <data name="result_detail_up" xml:space="preserve"><value>BREAKDOWN BY QUESTION (MINESEC MARKING)</value></data>
+  <data name="result_elements" xml:space="preserve"><value>4 items</value></data>
+  <data name="result_goal" xml:space="preserve"><value>Bac C goal reached</value></data>
+  <data name="result_mention" xml:space="preserve"><value>Distinction (83%)</value></data>
+  <data name="result_method_sheet" xml:space="preserve"><value>📖 Method sheet: “Writing the IVT in the Bac”</value></data>
+  <data name="result_next_ex" xml:space="preserve"><value>Go to Exercise 2 (Sequences) →</value></data>
+  <data name="result_on" xml:space="preserve"><value>out of 4.5 pts</value></data>
+  <data name="result_restart" xml:space="preserve"><value>↻ Restart the self-assessment</value></data>
+  <data name="result_saved" xml:space="preserve"><value>☁ Saved offline · Sync pending</value></data>
+  <data name="result_see_solution" xml:space="preserve"><value>▤ See the detailed step-by-step solution</value></data>
+  <data name="result_start_text" xml:space="preserve"><value>You have mastered 85% of the key skills of Chapter 3. Keep going to secure your distinction.</value></data>
+  <data name="result_start_title" xml:space="preserve"><value>Excellent start in Analysis!</value></data>
+  <data name="result_strength1" xml:space="preserve"><value>• Good rigour in computing the derivative.</value></data>
+  <data name="result_strength2" xml:space="preserve"><value>• Bracketing by dichotomy well done with 10⁻² precision.</value></data>
+  <data name="result_strengths" xml:space="preserve"><value>👍 Strengths identified</value></data>
+  <data name="result_time" xml:space="preserve"><value>◷ Time: 21 min (advised: 25 min) · Optimal pace</value></data>
+  <data name="search_count" xml:space="preserve"><value>{0} results</value></data>
+  <data name="search_lessons" xml:space="preserve"><value>Lessons</value></data>
+  <data name="search_local_sync" xml:space="preserve"><value>Local sync</value></data>
+  <data name="search_offline" xml:space="preserve"><value>◎ offline search</value></data>
+  <data name="security_text" xml:space="preserve"><value>After 5 failed attempts, the account is temporarily locked as a precaution. Your downloaded local data stays intact.</value></data>
+  <data name="security_title" xml:space="preserve"><value>Account security</value></data>
+  <data name="see_all" xml:space="preserve"><value>See all ›</value></data>
+  <data name="see_all_short" xml:space="preserve"><value>See all</value></data>
+  <data name="session_autosaved" xml:space="preserve"><value>● Auto-saved</value></data>
+  <data name="session_bar" xml:space="preserve"><value>Exercise session</value></data>
+  <data name="session_draft" xml:space="preserve"><value>✎ Digital draft</value></data>
+  <data name="session_epreuve" xml:space="preserve"><value>EXAM 2023 · Analysis</value></data>
+  <data name="session_equation_up" xml:space="preserve"><value>EQUATION UNDER STUDY (E)</value></data>
+  <data name="session_formulas_text" xml:space="preserve"><value>Useful formulas: f(x) = 0 ⇔ x ∈ solutions; IVT: f continuous on [a ; b] and k between f(a) and f(b) ⇒ ∃ c ∈ [a ; b], f(c) = k.</value></data>
+  <data name="session_free_space" xml:space="preserve"><value>✎ Free thinking space</value></data>
+  <data name="session_goal_text" xml:space="preserve"><value>Take 3 minutes without help before opening the full solution.</value></data>
+  <data name="session_goal_title" xml:space="preserve"><value>Goal: Distinction</value></data>
+  <data name="session_hint" xml:space="preserve"><value>See a methodological hint</value></data>
+  <data name="session_hint_text" xml:space="preserve"><value>Hint: first study the sign of the derivative to establish strict monotonicity, then apply the IVT.</value></data>
+  <data name="session_hints" xml:space="preserve"><value>💡 Hints (2 left)</value></data>
+  <data name="session_indication" xml:space="preserve"><value>Hint: f is continuous and strictly monotonic</value></data>
+  <data name="session_official" xml:space="preserve"><value>🔓 Official solution</value></data>
+  <data name="session_penalty" xml:space="preserve"><value>−0.25 pt on marks</value></data>
+  <data name="session_placeholder" xml:space="preserve"><value>Write your calculation steps or reasoning here (automatic local save)…</value></data>
+  <data name="session_question_of" xml:space="preserve"><value>Question 2 of 3</value></data>
+  <data name="session_status_left" xml:space="preserve"><value>● Baccalauréat C &amp; D · Cameroon</value></data>
+  <data name="session_status_right" xml:space="preserve"><value>✔ Offline active · Local session</value></data>
+  <data name="session_syllabus" xml:space="preserve"><value>✔ Official Cameroon syllabus</value></data>
+  <data name="session_validate" xml:space="preserve"><value>Submit &amp; Next →</value></data>
+  <data name="session_value" xml:space="preserve"><value>Worth: 2.75 / 5 pts</value></data>
+  <data name="session_write_hint" xml:space="preserve"><value>Write the bijectivity on paper or enter your line of argument below.</value></data>
+  <data name="sheet_after" xml:space="preserve"><value>Space used after download: 128 MB of 1.8 GB</value></data>
+  <data name="sheet_file_size" xml:space="preserve"><value>File size</value></data>
+  <data name="sheet_free_space" xml:space="preserve"><value>Available space</value></data>
+  <data name="sheet_free_value" xml:space="preserve"><value>1.8 GB</value></data>
+  <data name="sheet_subtitle" xml:space="preserve"><value>Access this lesson without an Internet connection</value></data>
+  <data name="sheet_title" xml:space="preserve"><value>Confirm download</value></data>
+  <data name="sheet_wifi_text" xml:space="preserve"><value>Saves your MTN / Orange mobile data</value></data>
+  <data name="stat_progress" xml:space="preserve"><value>PROGRESS</value></data>
+  <data name="stat_streak" xml:space="preserve"><value>DAY STREAK</value></data>
+  <data name="stat_week" xml:space="preserve"><value>THIS WEEK</value></data>
+  <data name="storage_allocated" xml:space="preserve"><value>Storage for courses</value></data>
+  <data name="subject_bar" xml:space="preserve"><value>Subject</value></data>
+  <data name="subsystem_hint" xml:space="preserve"><value>Preparation tailored for Cameroonian BEPC, Probatoire and Baccalauréat.</value></data>
+  <data name="tab_formulas" xml:space="preserve"><value>Formulas</value></data>
+  <data name="tab_method" xml:space="preserve"><value>Method</value></data>
+  <data name="tab_solution" xml:space="preserve"><value>Step-by-step solution</value></data>
+  <data name="tab_statement" xml:space="preserve"><value>Full statement</value></data>
+  <data name="tab_statement_q" xml:space="preserve"><value>Statement &amp; Questions</value></data>
+  <data name="tag_format" xml:space="preserve"><value>Wrong format</value></data>
+  <data name="tag_invalid" xml:space="preserve"><value>Invalid</value></data>
+  <data name="tag_level" xml:space="preserve"><value>Level too low</value></data>
+  <data name="tag_not_same" xml:space="preserve"><value>Not identical</value></data>
+  <data name="welcome_chip" xml:space="preserve"><value>100% Offline · MINESEC Cameroon</value></data>
+  <data name="welcome_create" xml:space="preserve"><value>Create a student account</value></data>
+  <data name="welcome_guest" xml:space="preserve"><value>Explore as a guest →</value></data>
+  <data name="welcome_have_account" xml:space="preserve"><value>I already have an account (Sign in)</value></data>
+  <data name="welcome_note" xml:space="preserve"><value>Designed to run smoothly on entry-level Android phones, without draining the battery or filling your storage.</value></data>
+  <data name="welcome_photo_caption" xml:space="preserve"><value>✔ National past-paper bank 2018–2024 included</value></data>
+  <data name="welcome_text" xml:space="preserve"><value>All course sheets, past papers and quizzes aligned with the official BEPC, Probatoire and Baccalauréat programmes.</value></data>
+  <data name="welcome_title" xml:space="preserve"><value>Revise anywhere, without an Internet connection.</value></data>
+  <data name="zero_credit" xml:space="preserve"><value>No credit required</value></data>
+  <data name="zero_credit_text" xml:space="preserve"><value>Once registered, your sheets and past papers stay available without an active Internet connection.</value></data>
+</root>

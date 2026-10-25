@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             x:Class="EduHorsLigne.Views.ReaderPage"
+             x:DataType="vm:ReaderViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [reader_bar], Source={x:Static loc:Loc.Instance}}" ShowBack="True" />
+        <Grid Grid.Row="1">
+
+            <Grid RowDefinitions="*,Auto">
+                <BoxView Color="{StaticResource BgDark}" IsVisible="{Binding IsDark}" />
+
+                <!-- Le contenu de la leçon (titre, paragraphes, définitions, tableaux...) est construit dans ReaderPage.xaml.cs
+                     à partir du fichier lesson.json téléchargé : aucune requête réseau pour lire. -->
+                <ScrollView x:Name="Scroller" Scrolled="OnScrolled">
+                    <c:CenteredContent MaxContentWidth="720">
+                        <VerticalStackLayout Padding="16,4,16,24" Spacing="12">
+                            <Grid ColumnDefinitions="*,Auto,Auto,Auto" ColumnSpacing="6">
+                                <c:Badge Text="{Binding ChapitreTitre}" Tone="Ok" HorizontalOptions="Start" VerticalOptions="Center" />
+                                <Button Grid.Column="1" Text="Aa" Style="{StaticResource SoftButton}" Padding="0" WidthRequest="44" Command="{Binding ToggleSettingsCommand}"
+                                        SemanticProperties.Description="{Binding [reader_settings], Source={x:Static loc:Loc.Instance}}" />
+                                <Button Grid.Column="2" Text="{Binding BookmarkIcon}" Style="{StaticResource SoftButton}" Padding="0" WidthRequest="44" Command="{Binding ToggleBookmarkCommand}"
+                                        SemanticProperties.Description="{Binding [bookmark], Source={x:Static loc:Loc.Instance}}" />
+                                <Button Grid.Column="3" Text="🔊" Style="{StaticResource SoftButton}" Padding="0" WidthRequest="44" Command="{Binding ListenCommand}"
+                                        SemanticProperties.Description="{Binding [listen], Source={x:Static loc:Loc.Instance}}" />
+                            </Grid>
+
+                            <VerticalStackLayout x:Name="LessonHost" Spacing="12" />
+
+                            <Border Style="{StaticResource Card}" Padding="12" IsVisible="{Binding HasQuiz}">
+                                <Border.GestureRecognizers><TapGestureRecognizer Command="{Binding QuizCommand}" /></Border.GestureRecognizers>
+                                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                    <Label Text="⚡" FontSize="20" VerticalOptions="Center" />
+                                    <VerticalStackLayout Grid.Column="1">
+                                        <Label Text="Flash Quiz" FontAttributes="Bold" FontSize="14"
+                                               TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                                        <Label Text="{Binding [reader_flash_text], Source={x:Static loc:Loc.Instance}}" FontSize="13" Style="{StaticResource MutedLabel}" />
+                                    </VerticalStackLayout>
+                                    <c:Badge Grid.Column="2" Text="{Binding [reader_2q], Source={x:Static loc:Loc.Instance}}" Tone="Ok" VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+                        </VerticalStackLayout>
+                    </c:CenteredContent>
+                </ScrollView>
+
+                <Border Grid.Row="1" Style="{StaticResource Card}" Padding="16,10" StrokeThickness="0">
+                    <c:CenteredContent MaxContentWidth="720">
+                        <VerticalStackLayout Spacing="6">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Text="{Binding [reader_section], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Text="{Binding ProgressText}" FontSize="12" FontAttributes="Bold" />
+                            </Grid>
+                            <ProgressBar Progress="{Binding SectionProgress}" />
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                                <Button Style="{StaticResource SoftButton}" Text="‹ Précédent" Command="{Binding PreviousCommand}" />
+                                <Button Grid.Column="1" Text="Suivant ›" Command="{Binding NextCommand}" />
+                            </Grid>
+                        </VerticalStackLayout>
+                    </c:CenteredContent>
+                </Border>
+
+                <Border Grid.RowSpan="2" IsVisible="{Binding ShowSettings}" Style="{StaticResource Card}" VerticalOptions="Start" HorizontalOptions="End" Margin="16,56,16,0" WidthRequest="280">
+                    <VerticalStackLayout Spacing="6">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="{Binding [reader_dark_mode], Source={x:Static loc:Loc.Instance}}" VerticalOptions="Center" />
+                            <Switch Grid.Column="1" IsToggled="{Binding IsDark}" SemanticProperties.Description="{Binding [reader_dark_mode], Source={x:Static loc:Loc.Instance}}" />
+                        </Grid>
+                        <Label Text="{Binding [reader_text_size], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                        <Slider Minimum="13" Maximum="24" Value="{Binding ReaderFontSize}" />
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+            <c:StateOverlay State="{Binding State}" />
+        </Grid>
+    </Grid>
+</ContentPage>

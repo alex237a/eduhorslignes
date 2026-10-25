@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:loc="clr-namespace:EduHorsLigne.Helpers" xmlns:c="clr-namespace:EduHorsLigne.Views.Controls" xmlns:m="clr-namespace:EduHorsLigne.Models"
+             x:Class="EduHorsLigne.Views.Controls.AppBar">
+    <Grid ColumnDefinitions="Auto,Auto,*,Auto,Auto" Padding="8,6,16,6" ColumnSpacing="8"
+          BackgroundColor="{AppThemeBinding Light={StaticResource BgLight}, Dark={StaticResource BgDark}}">
+        <Button x:Name="BackButton" Style="{StaticResource TextButton}" Text="←" FontSize="24" Padding="0"
+                WidthRequest="48" IsVisible="False" Clicked="OnBack"
+                SemanticProperties.Description="{Binding [back], Source={x:Static loc:Loc.Instance}}" />
+        <Border x:Name="LogoBadge" Grid.Column="1" BackgroundColor="{StaticResource PrimaryColor}" StrokeThickness="0"
+                WidthRequest="36" HeightRequest="36" Padding="0" IsVisible="False" VerticalOptions="Center">
+            <Border.StrokeShape><RoundRectangle CornerRadius="10" /></Border.StrokeShape>
+            <Label Text="EH" TextColor="White" FontAttributes="Bold" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Border>
+        <Label x:Name="TitleLabel" Grid.Column="2" Style="{StaticResource SubtitleLabel}" FontSize="20" VerticalOptions="Center" LineBreakMode="TailTruncation" />
+        <ContentView x:Name="RightHost" Grid.Column="3" VerticalOptions="Center" />
+        <Border x:Name="OfflineChip" Grid.Column="3" BackgroundColor="{StaticResource ToneOkBg}" StrokeThickness="0" Padding="8,4" VerticalOptions="Center" IsVisible="False">
+            <Border.StrokeShape><RoundRectangle CornerRadius="12" /></Border.StrokeShape>
+            <Label Text="{Binding [chip_offline], Source={x:Static loc:Loc.Instance}}" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource ToneOkFg}" />
+        </Border>
+        <Button x:Name="AvatarButton" Grid.Column="4" Text="👤" Padding="0" FontSize="18" CornerRadius="20"
+                WidthRequest="40" HeightRequest="40" MinimumHeightRequest="40" MinimumWidthRequest="40"
+                BackgroundColor="{StaticResource PrimaryColor}" TextColor="White" Clicked="OnAvatar"
+                SemanticProperties.Description="{Binding [tab_profile], Source={x:Static loc:Loc.Instance}}" />
+    </Grid>
+</ContentView>

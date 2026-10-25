@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.ProgressPage"
+             x:DataType="vm:ProgressViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [tab_progress], Source={x:Static loc:Loc.Instance}}" />
+        <Grid Grid.Row="1">
+
+    <Grid>
+        <CollectionView ItemsSource="{Binding Matieres}" SelectionMode="Single" SelectedItem="{Binding SelectedMatiere}" Margin="16,0">
+            <CollectionView.Behaviors><loc:ResponsiveSpanBehavior /></CollectionView.Behaviors>
+            <CollectionView.Header>
+                <VerticalStackLayout Spacing="12" Padding="0,16,0,8">
+                    <Border Style="{StaticResource Card}">
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="{Binding [progress_global], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" FontAttributes="Bold" />
+                            <Label Text="{Binding Global, StringFormat='{0:P0}'}" FontSize="36" FontAttributes="Bold" />
+                            <ProgressBar Progress="{Binding Global}" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                        <Border Style="{StaticResource SoftCard}" Padding="12">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding [progress_time], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                                <Label Text="{Binding StudyTime}" FontSize="22" FontAttributes="Bold" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Border Grid.Column="1" Style="{StaticResource SoftCard}" Padding="12">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding [progress_streak], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                                <HorizontalStackLayout Spacing="4">
+                                    <Label Text="🔥" FontSize="22" />
+                                    <Label Text="{Binding Streak}" FontSize="22" FontAttributes="Bold" />
+                                    <Label Text="{Binding [days], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" VerticalOptions="End" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+                    <Border Style="{StaticResource Card}">
+                        <VerticalStackLayout Spacing="6">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Text="{Binding [progress_goal], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Text="{Binding GoalText}" FontAttributes="Bold" />
+                            </Grid>
+                            <ProgressBar Progress="{Binding GoalFraction}" />
+                            <Label Text="{Binding [progress_goal_text], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Style="{StaticResource Card}">
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="{Binding [progress_exercises], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" />
+                            <Grid ColumnDefinitions="*,Auto"><Label Text="{Binding [progress_ex_done], Source={x:Static loc:Loc.Instance}}" FontSize="14" /><Label Grid.Column="1" Text="{Binding ExercisesDone}" FontAttributes="Bold" FontSize="14" /></Grid>
+                            <Grid ColumnDefinitions="*,Auto"><Label Text="{Binding [progress_ex_avg], Source={x:Static loc:Loc.Instance}}" FontSize="14" /><Label Grid.Column="1" Text="{Binding ExerciseAverage}" FontAttributes="Bold" FontSize="14" /></Grid>
+                            <Grid ColumnDefinitions="*,Auto"><Label Text="{Binding [progress_ex_review], Source={x:Static loc:Loc.Instance}}" FontSize="14" /><Label Grid.Column="1" Text="{Binding WeakChapter}" FontAttributes="Bold" FontSize="14" /></Grid>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Label Text="{Binding [progress_by_subject], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource SubtitleLabel}" Margin="0,8,0,0" />
+                </VerticalStackLayout>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:Matiere"><c:SubjectCard /></DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.Footer>
+                <VerticalStackLayout Padding="0,12,0,24">
+                    <Button Style="{StaticResource SecondaryButton}" Text="{Binding [progress_reset], Source={x:Static loc:Loc.Instance}}" loc:Demo.Confirm="reset_warning" />
+                </VerticalStackLayout>
+            </CollectionView.Footer>
+        </CollectionView>
+        <c:StateOverlay State="{Binding State}" />
+    </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

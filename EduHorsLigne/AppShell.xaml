@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell x:Class="EduHorsLigne.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:EduHorsLigne.Views"
+       xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+       FlyoutBehavior="Disabled"
+       Shell.BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceLight}, Dark={StaticResource SurfaceDark}}"
+       Shell.ForegroundColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}"
+       Shell.TitleColor="{AppThemeBinding Light={StaticResource TextLight}, Dark={StaticResource TextDark}}"
+       Shell.TabBarBackgroundColor="{AppThemeBinding Light={StaticResource SurfaceLight}, Dark={StaticResource SurfaceDark}}"
+       Shell.TabBarForegroundColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}"
+       Shell.TabBarTitleColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}"
+       Shell.TabBarUnselectedColor="{AppThemeBinding Light={StaticResource MutedLight}, Dark={StaticResource MutedDark}}">
+
+    <!-- Flux d'accueil / authentification -->
+    <ShellContent Route="welcome" ContentTemplate="{DataTemplate views:WelcomePage}" />
+    <ShellContent Route="login" ContentTemplate="{DataTemplate views:LoginPage}" />
+
+    <!-- Application : barre inférieure de 5 destinations -->
+    <TabBar Route="main">
+        <ShellContent Route="home" Title="{Binding [tab_home], Source={x:Static loc:Loc.Instance}}" ContentTemplate="{DataTemplate views:HomePage}">
+            <ShellContent.Icon><FontImageSource Glyph="🏠" Size="24" /></ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Route="search" Title="{Binding [tab_search], Source={x:Static loc:Loc.Instance}}" ContentTemplate="{DataTemplate views:SearchPage}">
+            <ShellContent.Icon><FontImageSource Glyph="🔍" Size="24" /></ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Route="library" Title="{Binding [tab_library], Source={x:Static loc:Loc.Instance}}" ContentTemplate="{DataTemplate views:LibraryPage}">
+            <ShellContent.Icon><FontImageSource Glyph="🗂" Size="24" /></ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Route="progress" Title="{Binding [tab_progress], Source={x:Static loc:Loc.Instance}}" ContentTemplate="{DataTemplate views:ProgressPage}">
+            <ShellContent.Icon><FontImageSource Glyph="📈" Size="24" /></ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Route="profile" Title="{Binding [tab_profile], Source={x:Static loc:Loc.Instance}}" ContentTemplate="{DataTemplate views:ProfilePage}">
+            <ShellContent.Icon><FontImageSource Glyph="👤" Size="24" /></ShellContent.Icon>
+        </ShellContent>
+    </TabBar>
+</Shell>

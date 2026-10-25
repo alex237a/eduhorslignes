@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:loc="clr-namespace:EduHorsLigne.Helpers" xmlns:c="clr-namespace:EduHorsLigne.Views.Controls" xmlns:m="clr-namespace:EduHorsLigne.Models"
+             x:Class="EduHorsLigne.Views.Controls.EmptyState">
+    <VerticalStackLayout Spacing="12" Padding="24" HorizontalOptions="Center" VerticalOptions="Center">
+        <Border Style="{StaticResource SoftCard}" WidthRequest="96" HeightRequest="96" Padding="0" HorizontalOptions="Center">
+            <Border.StrokeShape><RoundRectangle CornerRadius="48" /></Border.StrokeShape>
+            <Label x:Name="IconLabel" FontSize="44" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Border>
+        <Label x:Name="TitleLabel" Style="{StaticResource SubtitleLabel}" HorizontalTextAlignment="Center" />
+        <Label x:Name="MessageLabel" Style="{StaticResource MutedLabel}" HorizontalTextAlignment="Center" />
+        <Button x:Name="ActionButton" IsVisible="False" HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentView>

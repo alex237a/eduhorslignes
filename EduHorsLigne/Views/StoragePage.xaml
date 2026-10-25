@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.StoragePage"
+             x:DataType="vm:StorageViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [storage_title], Source={x:Static loc:Loc.Instance}}" ShowBack="True" />
+        <Grid Grid.Row="1">
+
+    <Grid>
+        <CollectionView ItemsSource="{Binding Items}" Margin="16,0">
+            <CollectionView.ItemsLayout><LinearItemsLayout Orientation="Vertical" ItemSpacing="8" /></CollectionView.ItemsLayout>
+            <CollectionView.Header>
+                <Border Style="{StaticResource Card}" Margin="0,16,0,12">
+                    <VerticalStackLayout Spacing="6">
+                        <ProgressBar Progress="{Binding UsedFraction}" />
+                        <Grid ColumnDefinitions="*,Auto">
+                            <HorizontalStackLayout Spacing="4"><Label Text="{Binding [storage_used], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" /><Label Text="{Binding UsedText}" FontAttributes="Bold" FontSize="14" /></HorizontalStackLayout>
+                            <HorizontalStackLayout Grid.Column="1" Spacing="4"><Label Text="{Binding [storage_free], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" /><Label Text="{Binding FreeText}" FontAttributes="Bold" FontSize="14" /></HorizontalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:StorageItem">
+                    <Border Style="{StaticResource Card}" Padding="12">
+                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="8" RowSpacing="4">
+                            <Label Text="{Binding Nom}" FontAttributes="Bold" />
+                            <Label Grid.Row="1" Text="{Binding Taille}" Style="{StaticResource CaptionLabel}" />
+                            <ProgressBar Grid.Row="2" Grid.ColumnSpan="2" Progress="{Binding Fraction}" />
+                            <Button Grid.Column="1" Grid.RowSpan="2" Style="{StaticResource SecondaryButton}" Text="{Binding [delete], Source={x:Static loc:Loc.Instance}}"
+                                    loc:Demo.Confirm="delete_storage_warning" VerticalOptions="Start" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.Footer>
+                <Label Text="{Binding [storage_note], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" Margin="0,12,0,24" />
+            </CollectionView.Footer>
+        </CollectionView>
+        <c:StateOverlay State="{Binding State}" />
+    </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

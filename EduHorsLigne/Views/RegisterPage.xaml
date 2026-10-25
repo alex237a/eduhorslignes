@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.RegisterPage"
+             x:DataType="vm:RegisterViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [register_title], Source={x:Static loc:Loc.Instance}}" ShowBack="True" ShowAvatar="False" />
+        <Grid Grid.Row="1">
+
+            <ScrollView>
+                <c:CenteredContent>
+                    <VerticalStackLayout Padding="16,8,16,32" Spacing="12">
+                        <Border IsVisible="{Binding HasErrors}" BackgroundColor="{StaticResource ToneErrBg}" StrokeThickness="0" Padding="14">
+                            <Border.StrokeShape><RoundRectangle CornerRadius="14" /></Border.StrokeShape>
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <c:IconCircle Glyph="!" Tone="Err" Diameter="32" VerticalOptions="Start" />
+                                <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                    <Label Text="{Binding ErrorSummary}" FontAttributes="Bold" TextColor="{StaticResource ToneErrFg}" />
+                                    <Label Text="{Binding [err_summary_text], Source={x:Static loc:Loc.Instance}}" FontSize="13" TextColor="{StaticResource ToneErrFg}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                        <Label Text="{Binding [register_intro], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" />
+                        <Border Style="{StaticResource SoftCard}" Padding="14">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <c:IconCircle Glyph="⚡" Tone="Neutral" VerticalOptions="Center" />
+                                <VerticalStackLayout Grid.Column="1">
+                                    <Label Text="{Binding [eco_mode], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" FontSize="14" />
+                                    <Label Text="{Binding [eco_mode_text], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                            <c:FormField Title="{Binding [field_lastname_up], Source={x:Static loc:Loc.Instance}}" UpperTitle="True" Text="{Binding Nom}" IsValid="{Binding NomValide}" />
+                            <c:FormField Grid.Column="1" Title="{Binding [field_firstname_up], Source={x:Static loc:Loc.Instance}}" UpperTitle="True" Text="{Binding Prenom}" IsValid="{Binding PrenomValide}" />
+                        </Grid>
+                        <c:FormField Title="{Binding [field_identifier_long], Source={x:Static loc:Loc.Instance}}" LeadingIcon="🪪" Placeholder="{Binding [ph_identifier], Source={x:Static loc:Loc.Instance}}"
+                                     Text="{Binding Identifiant}" InputKeyboard="Email" IsValid="{Binding IdentifiantValide}"
+                                     ErrorText="{Binding IdentifiantError}" TagText="{Binding IdentifiantTag}" />
+                        <c:FormField Title="{Binding [field_password], Source={x:Static loc:Loc.Instance}}" LeadingIcon="🔒" Text="{Binding Password}" IsPassword="True"
+                                     ErrorText="{Binding PasswordError}" TagText="{Binding PasswordTag}" />
+                        <VerticalStackLayout Spacing="4">
+                            <ProgressBar Progress="{Binding Strength}" />
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Text="{Binding StrengthText}" Style="{StaticResource CaptionLabel}" />
+                                <Label Grid.Column="1" Text="{Binding [pwd_required], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                            </Grid>
+                            <Label Text="{Binding [pwd_hint], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                        </VerticalStackLayout>
+                        <c:FormField Title="{Binding [field_confirm_up], Source={x:Static loc:Loc.Instance}}" UpperTitle="True" Placeholder="{Binding [ph_confirm], Source={x:Static loc:Loc.Instance}}"
+                                     Text="{Binding Confirm}" IsPassword="True" IsValid="{Binding ConfirmValide}"
+                                     ErrorText="{Binding ConfirmError}" TagText="{Binding ConfirmTag}" />
+                        <Label Text="{Binding [field_subsystem_long], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" FontSize="14" />
+                        <c:ChipBar Mode="Segmented" Items="{Binding SousSystemes}" SelectedIndex="{Binding SousSystemeIndex}" />
+                        <Label Text="{Binding [subsystem_hint], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                        <Label Text="{Binding [field_class_up], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" FontAttributes="Bold" />
+                        <Border Style="{StaticResource FieldBorder}">
+                            <Picker Title="{Binding [field_class], Source={x:Static loc:Loc.Instance}}" ItemsSource="{Binding Classes}" SelectedIndex="{Binding ClasseIndex}" />
+                        </Border>
+                        <Border Style="{StaticResource SoftCard}" Padding="10">
+                            <Grid ColumnDefinitions="Auto,*">
+                                <CheckBox IsChecked="{Binding AcceptCgu}" SemanticProperties.Description="{Binding [accept_terms_long], Source={x:Static loc:Loc.Instance}}" />
+                                <Label Grid.Column="1" Text="{Binding [accept_terms_long], Source={x:Static loc:Loc.Instance}}" FontSize="14" VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+                        <Label Text="{Binding CguError, StringFormat='❗ {0}'}" IsVisible="{Binding HasCguError}" FontSize="13" FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light={StaticResource ErrorColor}, Dark={StaticResource ErrorOnDarkColor}}" />
+                        <Button Text="{Binding [register_button], Source={x:Static loc:Loc.Instance}}" Command="{Binding RegisterCommand}" Margin="0,4,0,0" />
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                            <Label Text="{Binding [already_registered], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" VerticalOptions="Center" />
+                            <Button Style="{StaticResource TextButton}" Text="{Binding [login_link], Source={x:Static loc:Loc.Instance}}" Command="{Binding GoLoginCommand}" />
+                        </HorizontalStackLayout>
+                        <Border Style="{StaticResource Card}" Padding="14">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                <c:IconCircle Glyph="🛡" Tone="Warn" Diameter="32" VerticalOptions="Start" />
+                                <VerticalStackLayout Grid.Column="1">
+                                    <Label Text="{Binding [zero_credit], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" />
+                                    <Label Text="{Binding [zero_credit_text], Source={x:Static loc:Loc.Instance}}" FontSize="13" Style="{StaticResource MutedLabel}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+                </c:CenteredContent>
+            </ScrollView>
+        </Grid>
+    </Grid>
+</ContentPage>

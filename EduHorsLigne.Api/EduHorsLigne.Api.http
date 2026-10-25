@@ -1,0 +1,104 @@
+@host = http://localhost:5080
+@token = COLLER_ICI_LE_TOKEN_ELEVE
+@admin = COLLER_ICI_LE_TOKEN_ADMIN
+
+### Santé
+GET {{host}}/api/health
+
+### Inscription élève
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{ "nom": "Mbenbe", "prenom": "Pierre", "identifiant": "+237677000000", "motDePasse": "Secret123",
+  "confirmationMotDePasse": "Secret123", "classeId": "tle-c", "langue": "fr", "accepteConditions": true }
+
+### Connexion élève (compte de démo)
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "identifiant": "eleve@demo.cm", "motDePasse": "Demo1234" }
+
+### Mot de passe oublié (en Development, la réponse contient devCode)
+POST {{host}}/api/auth/forgot-password
+Content-Type: application/json
+
+{ "identifiant": "eleve@demo.cm" }
+
+### Profil
+GET {{host}}/api/me
+Authorization: Bearer {{token}}
+
+### Catalogue
+GET {{host}}/api/classes
+###
+GET {{host}}/api/classes/tle-c/subjects
+###
+GET {{host}}/api/subjects/tle-c-math/chapters
+###
+GET {{host}}/api/chapters/c-tle-suites/lessons
+###
+GET {{host}}/api/catalog?classeId=tle-c
+
+### Téléchargement
+GET {{host}}/api/lessons/l-suites-arith/checksum
+###
+GET {{host}}/api/lessons/l-suites-arith/package
+Authorization: Bearer {{token}}
+###
+GET {{host}}/api/chapters/c-tle-lim/package
+Authorization: Bearer {{token}}
+###
+POST {{host}}/api/lessons/package-batch
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "leconIds": ["l-limite", "l-tvi"] }
+
+### Mises à jour
+POST {{host}}/api/lessons/check-updates
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+[ { "id": "l-suites-arith", "version": 1 } ]
+
+### Synchronisation
+POST {{host}}/api/sync
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "sinceUtc": null,
+  "notes": [ { "id": "11111111111111111111111111111111", "leconId": "l-suites-arith", "position": 0.3, "texte": "Retenir la formule", "updatedUtc": "2026-10-23T10:00:00Z", "isDeleted": false } ],
+  "favoris": [ { "leconId": "l-tvi", "collection": null, "updatedUtc": "2026-10-23T10:00:00Z", "isDeleted": false } ],
+  "progressions": [ { "leconId": "l-suites-arith", "statut": "EnCours", "pourcentageLecture": 0.45, "tempsPasseSec": 300, "dernierePosition": 0.45, "updatedUtc": "2026-10-23T10:00:00Z" } ] }
+
+### Signalement / évaluation
+POST {{host}}/api/lessons/l-suites-arith/reports
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "id": "rep-0001", "type": "coquille", "message": "Faute dans la formule de la somme." }
+###
+POST {{host}}/api/lessons/l-suites-arith/rating
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "utile": true }
+
+### ===== Administration =====
+POST {{host}}/api/admin/login
+Content-Type: application/json
+
+{ "identifiant": "admin@eduhorsligne.cm", "motDePasse": "Admin#2026!" }
+
+###
+GET {{host}}/api/admin/lessons
+Authorization: Bearer {{admin}}
+###
+POST {{host}}/api/admin/lessons/l-suites-arith/publish
+Authorization: Bearer {{admin}}
+Content-Type: application/json
+
+{ "noteVersion": "Correction d'une coquille" }
+###
+GET {{host}}/api/admin/stats
+Authorization: Bearer {{admin}}

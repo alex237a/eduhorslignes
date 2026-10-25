@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:loc="clr-namespace:EduHorsLigne.Helpers" xmlns:c="clr-namespace:EduHorsLigne.Views.Controls" xmlns:m="clr-namespace:EduHorsLigne.Models"
+             x:Class="EduHorsLigne.Views.Controls.FormField">
+    <VerticalStackLayout Spacing="4">
+        <Grid ColumnDefinitions="*,Auto">
+            <Label x:Name="TitleLabel" Style="{StaticResource CaptionLabel}" FontAttributes="Bold" />
+            <Label x:Name="TagLabel" Grid.Column="1" FontSize="11" FontAttributes="Bold" IsVisible="False"
+                   TextColor="{AppThemeBinding Light={StaticResource ErrorColor}, Dark={StaticResource ErrorOnDarkColor}}" />
+        </Grid>
+        <Border x:Name="FieldFrame" Style="{StaticResource FieldBorder}">
+            <Grid ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="8">
+                <Label x:Name="LeadingLabel" VerticalOptions="Center" IsVisible="False" FontSize="18"
+                       TextColor="{AppThemeBinding Light={StaticResource MutedLight}, Dark={StaticResource MutedDark}}" />
+                <Entry x:Name="Input" Grid.Column="1" Focused="OnFocused" Unfocused="OnUnfocused" />
+                <Label x:Name="StateMark" Grid.Column="2" VerticalOptions="Center" FontSize="18" FontAttributes="Bold" IsVisible="False" />
+                <Button x:Name="ToggleButton" Grid.Column="3" Style="{StaticResource TextButton}" Text="👁"
+                        IsVisible="False" Clicked="OnToggle"
+                        SemanticProperties.Description="{Binding [show_hide_password], Source={x:Static loc:Loc.Instance}}" />
+            </Grid>
+        </Border>
+        <Label x:Name="ErrorLabel" FontSize="12" IsVisible="False" FontAttributes="Bold"
+               TextColor="{AppThemeBinding Light={StaticResource ErrorColor}, Dark={StaticResource ErrorOnDarkColor}}" />
+    </VerticalStackLayout>
+</ContentView>

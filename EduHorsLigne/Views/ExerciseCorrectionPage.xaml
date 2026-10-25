@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.ExerciseCorrectionPage"
+             x:DataType="vm:ExerciseCorrectionViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [corr_bar], Source={x:Static loc:Loc.Instance}}" ShowBack="True" />
+        <Grid Grid.Row="1">
+
+            <Grid RowDefinitions="*,Auto">
+                <ScrollView>
+                    <c:CenteredContent MaxContentWidth="720">
+                        <VerticalStackLayout Padding="16,0,16,24" Spacing="12">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Text="{Binding [corr_available], Source={x:Static loc:Loc.Instance}}" FontSize="12" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Text="18 Mo / Terminale C" Style="{StaticResource CaptionLabel}" />
+                            </Grid>
+                            <HorizontalStackLayout Spacing="6">
+                                <c:Badge Text="Σ Mathématiques · Tle C" Tone="Ok" />
+                                <c:Badge Text="🏅 Annales Baccalauréat 2024" Tone="Warn" />
+                            </HorizontalStackLayout>
+                            <Label Text="Exercice 1 : Continuité et Théorème des Valeurs Intermédiaires" FontSize="24" FontAttributes="Bold" />
+                            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                                <Border Style="{StaticResource Card}" Padding="8"><VerticalStackLayout HorizontalOptions="Center" Spacing="2">
+                                    <Label Text="{Binding [ex_difficulty_up], Source={x:Static loc:Loc.Instance}}" FontSize="10" Style="{StaticResource CaptionLabel}" HorizontalOptions="Center" />
+                                    <Label Text="★★★☆☆" FontSize="14" HorizontalOptions="Center" TextColor="{StaticResource AccentColor}" />
+                                    <Label Text="{Binding [badge_medium], Source={x:Static loc:Loc.Instance}}" FontSize="12" HorizontalOptions="Center" /></VerticalStackLayout></Border>
+                                <Border Grid.Column="1" Style="{StaticResource Card}" Padding="8"><VerticalStackLayout HorizontalOptions="Center" Spacing="2">
+                                    <Label Text="{Binding [ex_time_up], Source={x:Static loc:Loc.Instance}}" FontSize="10" Style="{StaticResource CaptionLabel}" HorizontalOptions="Center" />
+                                    <Label Text="⏱ 25 min" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" />
+                                    <Label Text="{Binding [ex_advised], Source={x:Static loc:Loc.Instance}}" FontSize="12" HorizontalOptions="Center" /></VerticalStackLayout></Border>
+                                <Border Grid.Column="2" Style="{StaticResource Card}" Padding="8"><VerticalStackLayout HorizontalOptions="Center" Spacing="2">
+                                    <Label Text="{Binding [ex_scale_up], Source={x:Static loc:Loc.Instance}}" FontSize="10" Style="{StaticResource CaptionLabel}" HorizontalOptions="Center" />
+                                    <Label Text="☆ 4,5 pts" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" />
+                                    <Label Text="MINESEC" FontSize="12" HorizontalOptions="Center" /></VerticalStackLayout></Border>
+                            </Grid>
+                            <c:ChipBar Mode="Tabs" Items="{Binding TabItems}" SelectedIndex="{Binding TabIndex}" />
+                            <Border Style="{StaticResource SoftCard}" Padding="14">
+                                <VerticalStackLayout Spacing="8">
+                                    <Grid ColumnDefinitions="Auto,*">
+                                        <c:Badge Text="QUESTION 2.b" Tone="Neutral" />
+                                        <Label Grid.Column="1" Text="Partie A" Style="{StaticResource CaptionLabel}" HorizontalOptions="End" />
+                                    </Grid>
+                                    <Label Text="Démontrer que l'équation x³ + 2x − 5 = 0 admet une unique solution α appartenant à l'intervalle [1 ; 2]. Donner un encadrement de 10⁻² près." FontSize="15" />
+                                    <VerticalStackLayout IsVisible="{Binding IsStatement}">
+                                        <Label Text="{Binding [corr_statement_full], Source={x:Static loc:Loc.Instance}}" FontSize="14" Style="{StaticResource MutedLabel}" />
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout IsVisible="{Binding IsMethod}">
+                                        <Label Text="{Binding [corr_method_text], Source={x:Static loc:Loc.Instance}}" FontSize="14" Style="{StaticResource MutedLabel}" />
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+                            <VerticalStackLayout IsVisible="{Binding ShowSteps}" Spacing="10">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label Text="{Binding [corr_guide], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" FontSize="15"
+                                           TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                                    <c:Badge Grid.Column="1" Text="{Binding [corr_steps_valid], Source={x:Static loc:Loc.Instance}}" Tone="Ok" />
+                                </Grid>
+                                <VerticalStackLayout Spacing="10" BindableLayout.ItemsSource="{Binding Steps}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate x:DataType="m:CorrectionStep">
+                                            <Grid>
+                                                <Border Style="{StaticResource Card}" Padding="14" IsVisible="{Binding Normale}">
+                                                    <VerticalStackLayout Spacing="8">
+                                                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
+                                                            <c:IconCircle Glyph="✓" Tone="Ok" Diameter="26" VerticalOptions="Start" />
+                                                            <Label Grid.Column="1" Text="{Binding Titre}" FontAttributes="Bold" FontSize="15" />
+                                                            <c:Badge Grid.Column="2" Text="{Binding Points}" Tone="Ok" VerticalOptions="Start" />
+                                                        </Grid>
+                                                        <Border Style="{StaticResource SoftCard}" Padding="10" IsVisible="{Binding ADesFormule}">
+                                                            <Label Text="{Binding Formule}" FontAttributes="Bold" FontSize="14" HorizontalOptions="Center" />
+                                                        </Border>
+                                                        <Label Text="{Binding Texte}" FontSize="14" />
+                                                    </VerticalStackLayout>
+                                                </Border>
+                                                <Border BackgroundColor="{StaticResource ToneOkBg}" StrokeThickness="0" Padding="14" IsVisible="{Binding Conclusion}">
+                                                    <Border.StrokeShape><RoundRectangle CornerRadius="14" /></Border.StrokeShape>
+                                                    <VerticalStackLayout Spacing="8">
+                                                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
+                                                            <c:IconCircle Glyph="✓" Tone="Primary" Diameter="26" VerticalOptions="Start" />
+                                                            <Label Grid.Column="1" Text="{Binding Titre}" FontAttributes="Bold" FontSize="15" TextColor="{StaticResource ToneOkFg}" />
+                                                            <c:Badge Grid.Column="2" Text="{Binding Points}" Tone="Primary" VerticalOptions="Start" />
+                                                        </Grid>
+                                                        <Label Text="{Binding [corr_official_wording], Source={x:Static loc:Loc.Instance}}" FontSize="11" FontAttributes="Bold" TextColor="{StaticResource ToneOkFg}" />
+                                                        <Label Text="{Binding Texte}" FontAttributes="Italic" FontSize="14" TextColor="{StaticResource ToneOkFg}" />
+                                                    </VerticalStackLayout>
+                                                </Border>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </VerticalStackLayout>
+                                <Border BackgroundColor="{StaticResource ToneWarnBg}" StrokeThickness="0" Padding="14">
+                                    <Border.StrokeShape><RoundRectangle CornerRadius="14" /></Border.StrokeShape>
+                                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                        <c:IconCircle Glyph="💡" Tone="Accent" Diameter="30" VerticalOptions="Start" />
+                                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                            <Label Text="{Binding [corr_tip_title], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" FontSize="14" TextColor="{StaticResource ToneWarnFg}" />
+                                            <Label Text="{Binding [corr_tip_text], Source={x:Static loc:Loc.Instance}}" FontSize="14" TextColor="{StaticResource ToneWarnFg}" />
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Border>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+                    </c:CenteredContent>
+                </ScrollView>
+                <Border Grid.Row="1" Style="{StaticResource Card}" StrokeThickness="0" Padding="16,10">
+                    <c:CenteredContent MaxContentWidth="720">
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                            <Button Style="{StaticResource SoftButton}" Text="{Binding MaskLabel}" Command="{Binding ToggleMaskCommand}" />
+                            <Button Grid.Column="1" Text="{Binding [corr_next], Source={x:Static loc:Loc.Instance}}" Command="{Binding NextCommand}" />
+                        </Grid>
+                    </c:CenteredContent>
+                </Border>
+            </Grid>
+            <c:StateOverlay State="{Binding State}" />
+        </Grid>
+    </Grid>
+</ContentPage>

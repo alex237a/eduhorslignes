@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:loc="clr-namespace:EduHorsLigne.Helpers" xmlns:c="clr-namespace:EduHorsLigne.Views.Controls" xmlns:m="clr-namespace:EduHorsLigne.Models"
+             x:Class="EduHorsLigne.Views.Controls.ResultCard" x:DataType="m:ResultItem">
+    <Border Style="{StaticResource Card}" Padding="12">
+        <VerticalStackLayout Spacing="6">
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="{Binding Numero, StringFormat='#{0}'}" Style="{StaticResource CaptionLabel}" FontAttributes="Bold" VerticalOptions="Center" />
+                <c:Badge Grid.Column="1" Kind="{Binding Verdict}" />
+            </Grid>
+            <Label Text="{Binding Enonce}" FontAttributes="Bold" />
+            <HorizontalStackLayout Spacing="4">
+                <Label Text="{Binding [your_answer], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" />
+                <Label Text="{Binding Reponse}" FontSize="14" FontAttributes="Bold" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="4">
+                <Label Text="{Binding [right_answer], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource MutedLabel}" />
+                <Label Text="{Binding BonneReponse}" FontSize="14" FontAttributes="Bold" />
+            </HorizontalStackLayout>
+            <Border Style="{StaticResource SoftCard}" Padding="12">
+                <Label Text="{Binding Explication}" FontSize="14" />
+            </Border>
+        </VerticalStackLayout>
+    </Border>
+</ContentView>

@@ -1,0 +1,21 @@
+﻿# Visual Studio
+.vs/
+*.vsidx
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Résultats de compilation
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Rider / VS Code
+.idea/
+.vscode/
+
+# Fichiers système
+Thumbs.db
+.DS_Store

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EduHorsLigne.ViewModels"
+             xmlns:m="clr-namespace:EduHorsLigne.Models"
+             xmlns:loc="clr-namespace:EduHorsLigne.Helpers"
+             xmlns:c="clr-namespace:EduHorsLigne.Views.Controls"
+             xmlns:v="clr-namespace:EduHorsLigne.Views"
+             x:Class="EduHorsLigne.Views.ExerciseSessionPage"
+             x:DataType="vm:ExerciseSessionViewModel"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+        <c:AppBar Title="{Binding [session_bar], Source={x:Static loc:Loc.Instance}}" ShowBack="True" />
+        <Grid Grid.Row="1">
+
+            <Grid RowDefinitions="*,Auto">
+                <ScrollView>
+                    <c:CenteredContent MaxContentWidth="720">
+                        <VerticalStackLayout Padding="16,0,16,24" Spacing="12">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Text="{Binding [session_status_left], Source={x:Static loc:Loc.Instance}}" FontSize="12" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Text="{Binding [session_status_right], Source={x:Static loc:Loc.Instance}}" FontSize="12" Style="{StaticResource CaptionLabel}" />
+                            </Grid>
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding [session_epreuve], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" FontAttributes="Bold" />
+                                    <Label Text="Maths Tle C · Ex. 1 / 4" FontSize="20" FontAttributes="Bold" />
+                                </VerticalStackLayout>
+                                <Border Grid.Column="1" Style="{StaticResource Card}" Padding="10,6" VerticalOptions="Center">
+                                    <HorizontalStackLayout Spacing="6">
+                                        <Label Text="⏱ 18:42" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="/ 25m" Style="{StaticResource CaptionLabel}" VerticalOptions="Center" />
+                                        <Button Text="{Binding PauseIcon}" Style="{StaticResource TextButton}" Padding="0" WidthRequest="32" HeightRequest="32" MinimumHeightRequest="32"
+                                                MinimumWidthRequest="32" Command="{Binding TogglePauseCommand}" SemanticProperties.Description="{Binding [pause], Source={x:Static loc:Loc.Instance}}" />
+                                    </HorizontalStackLayout>
+                                </Border>
+                            </Grid>
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Text="{Binding [session_question_of], Source={x:Static loc:Loc.Instance}}" FontSize="13" FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                                <Label Grid.Column="1" Text="{Binding [session_value], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                            </Grid>
+                            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="6" RowDefinitions="Auto,Auto">
+                                <BoxView HeightRequest="5" CornerRadius="3" Color="{StaticResource PrimaryColor}" />
+                                <BoxView Grid.Column="1" HeightRequest="5" CornerRadius="3" Color="{StaticResource AccentColor}" />
+                                <BoxView Grid.Column="2" HeightRequest="5" CornerRadius="3" Color="{StaticResource OutlineLight}" />
+                                <Label Grid.Row="1" Text="1. Dérivabilité" FontSize="11" Style="{StaticResource CaptionLabel}" />
+                                <Label Grid.Row="1" Grid.Column="1" Text="2.b Théorème TVI" FontSize="11" FontAttributes="Bold" />
+                                <Label Grid.Row="1" Grid.Column="2" Text="3. Signe &amp; Courbe" FontSize="11" Style="{StaticResource CaptionLabel}" />
+                            </Grid>
+                            <c:ChipBar Mode="Tabs" Items="{Binding TabItems}" SelectedIndex="{Binding TabIndex}" />
+                            <Border Style="{StaticResource Card}" Padding="14">
+                                <VerticalStackLayout Spacing="10">
+                                    <VerticalStackLayout IsVisible="{Binding IsStatement}" Spacing="10">
+                                        <Grid ColumnDefinitions="Auto,*">
+                                            <c:Badge Text="QUESTION 2.B · PARTIE A" Tone="Primary" />
+                                            <Label Grid.Column="1" Text="1,25 pt" Style="{StaticResource CaptionLabel}" HorizontalOptions="End" />
+                                        </Grid>
+                                        <Label Text="{Binding [session_syllabus], Source={x:Static loc:Loc.Instance}}" FontSize="12" FontAttributes="Bold"
+                                               TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                                        <Label Text="Démontrer que l'équation ci-dessous admet une unique solution notée α appartenant à l'intervalle [1 ; 2]. Donner ensuite un encadrement d'amplitude 10⁻² de ce réel α." FontSize="17" LineHeight="1.4" />
+                                        <Border Style="{StaticResource SoftCard}" Padding="14">
+                                            <VerticalStackLayout Spacing="6">
+                                                <Label Text="{Binding [session_equation_up], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" HorizontalOptions="Center" />
+                                                <Label Text="x³ + 2x − 5 = 0,   x ∈ [1 ; 2]" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+                                                <Label Text="{Binding [session_indication], Source={x:Static loc:Loc.Instance}}" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                                                       TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                                            </VerticalStackLayout>
+                                        </Border>
+                                        <Label Text="{Binding [session_write_hint], Source={x:Static loc:Loc.Instance}}" FontSize="13" Style="{StaticResource MutedLabel}" />
+                                    </VerticalStackLayout>
+                                    <Label IsVisible="{Binding IsMethod}" Text="{Binding [corr_method_text], Source={x:Static loc:Loc.Instance}}" FontSize="14" />
+                                    <Label IsVisible="{Binding IsFormulas}" Text="{Binding [session_formulas_text], Source={x:Static loc:Loc.Instance}}" FontSize="14" />
+                                </VerticalStackLayout>
+                            </Border>
+                            <Grid ColumnDefinitions="Auto,Auto,*" ColumnSpacing="8">
+                                <Button Text="{Binding [session_draft], Source={x:Static loc:Loc.Instance}}" Padding="14,0" />
+                                <Button Grid.Column="1" Style="{StaticResource SoftButton}" Text="{Binding [session_hints], Source={x:Static loc:Loc.Instance}}" Padding="14,0" Command="{Binding ToggleHintCommand}" />
+                                <Label Grid.Column="2" Text="{Binding [session_autosaved], Source={x:Static loc:Loc.Instance}}" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="End"
+                                       TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                            </Grid>
+                            <Border Style="{StaticResource Card}" Padding="12">
+                                <VerticalStackLayout Spacing="8">
+                                    <Grid ColumnDefinitions="*,Auto,Auto,Auto" ColumnSpacing="6">
+                                        <Label Text="{Binding [session_free_space], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" VerticalOptions="Center" />
+                                        <Button Grid.Column="1" Text="α" Style="{StaticResource SoftButton}" MinimumHeightRequest="40" Padding="10,0" Command="{Binding InsertAlphaCommand}" />
+                                        <Button Grid.Column="2" Text="[a ; b]" Style="{StaticResource SoftButton}" MinimumHeightRequest="40" Padding="10,0" Command="{Binding InsertIntervalCommand}" />
+                                        <Button Grid.Column="3" Text="{Binding [clear_text], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource TextButton}" MinimumHeightRequest="40" FontSize="13" Command="{Binding ClearCommand}" />
+                                    </Grid>
+                                    <Border Style="{StaticResource FieldBorder}" Padding="10">
+                                        <Editor Text="{Binding Draft}" HeightRequest="130" Placeholder="{Binding [session_placeholder], Source={x:Static loc:Loc.Instance}}" SemanticProperties.Description="{Binding [session_free_space], Source={x:Static loc:Loc.Instance}}" />
+                                    </Border>
+                                </VerticalStackLayout>
+                            </Border>
+                            <Border BackgroundColor="{StaticResource ToneWarnBg}" StrokeThickness="0" Padding="12">
+                                <Border.StrokeShape><RoundRectangle CornerRadius="14" /></Border.StrokeShape>
+                                <Border.GestureRecognizers><TapGestureRecognizer Command="{Binding ToggleHintCommand}" /></Border.GestureRecognizers>
+                                <VerticalStackLayout Spacing="6">
+                                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                        <Label Text="💡" FontSize="20" VerticalOptions="Center" />
+                                        <Label Grid.Column="1" Text="{Binding [session_hint], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" FontSize="14" TextColor="{StaticResource ToneWarnFg}" VerticalOptions="Center" />
+                                        <c:Badge Grid.Column="2" Text="{Binding [session_penalty], Source={x:Static loc:Loc.Instance}}" Tone="Accent" VerticalOptions="Center" />
+                                    </Grid>
+                                    <Label IsVisible="{Binding HintShown}" Text="{Binding [session_hint_text], Source={x:Static loc:Loc.Instance}}" FontSize="14" TextColor="{StaticResource ToneWarnFg}" />
+                                </VerticalStackLayout>
+                            </Border>
+                            <Border Style="{StaticResource SoftCard}" Padding="12">
+                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                    <c:IconCircle Glyph="🏅" Tone="Primary" VerticalOptions="Center" />
+                                    <VerticalStackLayout Grid.Column="1">
+                                        <Label Text="{Binding [session_goal_title], Source={x:Static loc:Loc.Instance}}" FontAttributes="Bold" FontSize="14" />
+                                        <Label Text="{Binding [session_goal_text], Source={x:Static loc:Loc.Instance}}" FontSize="13" Style="{StaticResource MutedLabel}" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+                        </VerticalStackLayout>
+                    </c:CenteredContent>
+                </ScrollView>
+                <Border Grid.Row="1" Style="{StaticResource Card}" StrokeThickness="0" Padding="16,10">
+                    <c:CenteredContent MaxContentWidth="720">
+                        <Grid ColumnDefinitions="Auto,*,2*" ColumnSpacing="8">
+                            <Button Style="{StaticResource SoftButton}" Text="✎" Padding="0" WidthRequest="48" SemanticProperties.Description="{Binding [session_draft], Source={x:Static loc:Loc.Instance}}" />
+                            <Button Grid.Column="1" Style="{StaticResource SoftButton}" Text="{Binding [session_official], Source={x:Static loc:Loc.Instance}}" Command="{Binding OfficialCommand}" />
+                            <Button Grid.Column="2" Text="{Binding [session_validate], Source={x:Static loc:Loc.Instance}}" Command="{Binding ValidateCommand}" />
+                        </Grid>
+                    </c:CenteredContent>
+                </Border>
+            </Grid>
+            <c:StateOverlay State="{Binding State}" />
+        </Grid>
+    </Grid>
+</ContentPage>

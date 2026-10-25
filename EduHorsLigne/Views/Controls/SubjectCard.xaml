@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:loc="clr-namespace:EduHorsLigne.Helpers" xmlns:c="clr-namespace:EduHorsLigne.Views.Controls" xmlns:m="clr-namespace:EduHorsLigne.Models"
+             x:Class="EduHorsLigne.Views.Controls.SubjectCard" x:DataType="m:Matiere">
+    <Border Style="{StaticResource Card}" Padding="14">
+        <VerticalStackLayout Spacing="6">
+            <Grid ColumnDefinitions="*,Auto">
+                <c:IconCircle Glyph="{Binding Icone}" Tone="{Binding Ton}" HorizontalOptions="Start" />
+                <Label Grid.Column="1" Text="✓" IsVisible="{Binding ADesLecons}" FontAttributes="Bold" FontSize="16"
+                       TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+                <Label Grid.Column="1" Text="☁" IsVisible="{Binding HorsLigneVide}" FontSize="16"
+                       TextColor="{AppThemeBinding Light={StaticResource MutedLight}, Dark={StaticResource MutedDark}}" />
+            </Grid>
+            <Label Text="{Binding Nom}" FontAttributes="Bold" FontSize="17" LineBreakMode="TailTruncation" Margin="0,4,0,0" />
+            <Label Text="{Binding Meta}" Style="{StaticResource CaptionLabel}" />
+            <Grid ColumnDefinitions="*,Auto" Margin="0,4,0,0">
+                <Label Text="{Binding [progress_label], Source={x:Static loc:Loc.Instance}}" Style="{StaticResource CaptionLabel}" />
+                <Label Grid.Column="1" Text="{Binding Progression, StringFormat='{0:P0}'}" FontSize="12" FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light={StaticResource PrimaryDarkColor}, Dark={StaticResource PrimaryOnDarkColor}}" />
+            </Grid>
+            <ProgressBar Progress="{Binding Progression}" />
+        </VerticalStackLayout>
+    </Border>
+</ContentView>
